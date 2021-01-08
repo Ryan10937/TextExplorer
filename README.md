@@ -1,3 +1,2 @@
-# TextExplorer
-
-Repo for explorer game with VS Community folders added
+# Explorer
+Explore a 2D Text-Based World 
