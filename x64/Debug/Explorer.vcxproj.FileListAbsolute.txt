@@ -1,0 +1,2 @@
+C:\Users\Chandler\source\repos\Ryan10937\TextExplorer\x64\Debug\Explorer.exe
+C:\Users\Chandler\source\repos\Ryan10937\TextExplorer\x64\Debug\Explorer.pdb

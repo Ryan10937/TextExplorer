@@ -139,31 +139,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="Explorer\a.exe" />
-    <None Include="Explorer\README.md" />
+    <None Include="a.exe" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Explorer\board.cpp" />
-    <ClCompile Include="Explorer\createItems.cpp" />
-    <ClCompile Include="Explorer\entity.cpp" />
-    <ClCompile Include="Explorer\event.cpp" />
-    <ClCompile Include="Explorer\fetchQuest.cpp" />
-    <ClCompile Include="Explorer\fightEvent.cpp" />
-    <ClCompile Include="Explorer\iAmHere.cpp" />
-    <ClCompile Include="Explorer\main.cpp" />
-    <ClCompile Include="Explorer\spot.cpp" />
+    <ClCompile Include="board.cpp" />
+    <ClCompile Include="createItems.cpp" />
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="event.cpp" />
+    <ClCompile Include="fetchQuest.cpp" />
+    <ClCompile Include="fightEvent.cpp" />
+    <ClCompile Include="iAmHere.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="spot.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Explorer\board.h" />
-    <ClInclude Include="Explorer\createItems.h" />
-    <ClInclude Include="Explorer\entity.h" />
-    <ClInclude Include="Explorer\event.h" />
-    <ClInclude Include="Explorer\fetchQuest.h" />
-    <ClInclude Include="Explorer\fightEvent.h" />
-    <ClInclude Include="Explorer\iAmHere.h" />
-    <ClInclude Include="Explorer\item.h" />
-    <ClInclude Include="Explorer\ItemTypes.h" />
-    <ClInclude Include="Explorer\spot.h" />
+    <ClInclude Include="board.h" />
+    <ClInclude Include="createItems.h" />
+    <ClInclude Include="entity.h" />
+    <ClInclude Include="event.h" />
+    <ClInclude Include="fetchQuest.h" />
+    <ClInclude Include="fightEvent.h" />
+    <ClInclude Include="iAmHere.h" />
+    <ClInclude Include="item.h" />
+    <ClInclude Include="ItemTypes.h" />
+    <ClInclude Include="spot.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
