@@ -116,6 +116,15 @@ void board::MoveEntity(string direction, entity* player){
     
 
 }
+
+void board::SetEntity(int xPos, int yPos, entity* player){
+    AddNewEntity(player,xPos,yPos);
+}
+void board::SetDisplayChar(int xPos, int yPos, char displayChar){
+    ((grid->at(yPos))->at(xPos))->SetDisplayChar(displayChar);
+}
+
+
 void board::PrintGrid(){
 
     //system("CLS");

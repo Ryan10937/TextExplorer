@@ -19,6 +19,8 @@ class board{
     void AddNewEntity(entity* player, pair<int,int> position);
     void AddNewEntity(entity* player, int xPos, int yPos);
     void MoveEntity(string direction, entity* player);
+    void SetEntity(int xPos, int yPos, entity* player);
+    void SetDisplayChar(int xPos, int yPos, char displayChar);
     void PrintGrid();
     bool PromptPlayer(string prompt, entity* player);
     ~board();

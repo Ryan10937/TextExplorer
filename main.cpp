@@ -10,8 +10,8 @@ using namespace std;
 int main()
 {
 
-    std::cout << "Please Work" << std::endl;
-    /*
+    //std::cout << "Please Work" << std::endl;
+    
     int boardHeight = 20;
     int boardWidth = 100;
     char playerChar = 'O';
@@ -41,7 +41,7 @@ int main()
 
     delete(player);
     delete(gameMap);
-    */
+    
 
     return 0;
 }
