@@ -4,6 +4,7 @@
 
 #include"entity.h"
 #include"board.h"
+#include"InsertCity.h"
 
 using namespace std;
 
@@ -21,6 +22,14 @@ int main()
     board* gameMap = new board(boardHeight,boardWidth);
     gameMap->AddNewEntity(player,boardWidth/2,boardHeight/2);
     gameMap->PrintGrid();
+
+    //make and insert cities
+        //make city
+        BuildCity()
+
+        //insert city
+        InsertCity(gameMap);
+
 
     bool isQuitting = false;
     int loopBreaker = 0;
