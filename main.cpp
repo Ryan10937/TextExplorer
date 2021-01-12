@@ -25,7 +25,7 @@ int main()
 
     //make and insert cities
         //make city
-        BuildCity()
+        //vector<city> BuildCity();
 
         //insert city
         InsertCity(gameMap);
