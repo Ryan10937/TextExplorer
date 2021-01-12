@@ -13,6 +13,18 @@ spot::spot(char fogOfWarChar){
     type = "noType";
     hasPlayer = false;
     entity* player = nullptr;
+    hasEvent = false;
+}
+
+void spot::Copy(spot* newSpot) 
+{
+  this->displayChar = newSpot->GetDisplayChar();
+  this->eventCollection = newSpot->GetEventCollection();
+  this->position = newSpot->GetPosition();
+  this->type = newSpot->GetType();
+  this->hasPlayer = newSpot->GetHasPlayer();
+  this->player = newSpot->GetEntity();
+  this->hasEvent = newSpot->GetHasEvent();
 }
 
 char spot::GetDisplayChar(){

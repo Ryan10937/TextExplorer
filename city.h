@@ -21,10 +21,13 @@ class city{
     void AddBlocker(pair<int,int> blockerLocations);
     vector<vector<spot*>*>* GetCityLayout();
     pair<int,int> GetCenterOnMap();
+    void SetName(string name);
+    string GetName();
 
     private:
     vector<vector<spot*>*>* cityLayout;
     pair<int,int> centerOnMap;
+    string name;
 
 
 

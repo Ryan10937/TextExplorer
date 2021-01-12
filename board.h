@@ -6,6 +6,7 @@
 #include<string>
 #include"spot.h"
 #include"entity.h"
+#include"city.h"
 
 using namespace std;
 
@@ -23,6 +24,7 @@ class board{
     void SetDisplayChar(int xPos, int yPos, char displayChar);
     void PrintGrid();
     bool PromptPlayer(string prompt, entity* player);
+    void AddCity(city* newCity);
     ~board();
 
     

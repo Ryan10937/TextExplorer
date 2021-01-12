@@ -2,6 +2,7 @@
 #include<string>
 #include<vector>
 
+#include"iAmHere.h"
 #include"entity.h"
 #include"board.h"
 #include"InsertCity.h"
@@ -21,15 +22,18 @@ int main()
     player->SetDisplayChar(playerChar);
     board* gameMap = new board(boardHeight,boardWidth);
     gameMap->AddNewEntity(player,boardWidth/2,boardHeight/2);
-    gameMap->PrintGrid();
 
     //make and insert cities
         //make city
-        //vector<city> BuildCity();
+        city* testCity = new city(5,6,make_pair(10,30));//does not test board x and y
+        testCity->AddPerimeterWalls();
+        testCity->SetName("SterzOpolis");
 
         //insert city
-        InsertCity(gameMap);
-
+        gameMap->AddCity(testCity);
+        //InsertCity(gameMap);
+    
+        gameMap->PrintGrid();
 
     bool isQuitting = false;
     int loopBreaker = 0;
@@ -38,7 +42,7 @@ int main()
         isQuitting = gameMap->PromptPlayer(" ",player);
         
         if(isQuitting == false){
-            gameMap->PrintGrid();
+            //gameMap->PrintGrid();
         }
 
         loopBreaker++;
@@ -51,6 +55,6 @@ int main()
     delete(player);
     delete(gameMap);
     
-
+    cout <<"Thank you for playing!"<<endl;
     return 0;
 }

@@ -16,6 +16,7 @@ class spot{
     spot(char fogOfWarChar);
     //mutators
     //accessors
+    void Copy(spot* newSpot);
     char GetDisplayChar();
     void SetDisplayChar(char displayChar);
     event* GetEventCollection();

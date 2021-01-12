@@ -84,5 +84,10 @@ pair<int,int> city::GetCenterOnMap(){
     return centerOnMap;
 }
 
-
+void city::SetName(string name){
+    this->name = name;
+}
+string city::GetName(){
+    return name;
+}
 //destructor to deconstruct vector-vector-spot
