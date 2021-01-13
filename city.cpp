@@ -1,5 +1,6 @@
 #include<vector>
 #include<string>
+#include<iostream>
 #include"spot.h"
 #include"city.h"
 
@@ -16,12 +17,13 @@ city::city(int height, int width, pair<int,int> center){
         tempRow = new vector<spot*>;
         for(int j=0;j<width;j++){
             tempSpot = new spot(219);
+            tempSpot->SetPosition(j,i);
+            //tempSpot->SetPosition(make_pair(j,i));
             //add things to spot?
             tempRow->push_back(tempSpot);
         }
         cityLayout->push_back(tempRow);
     }
-
     //set center
     centerOnMap = center; 
 
@@ -35,12 +37,17 @@ city::city(int height, int width, int xCenter, int yCenter){
         tempRow = new vector<spot*>;
         for(int j=0;j<width;j++){
             tempSpot = new spot(219);
-            tempSpot->SetPosition(make_pair(j,i));
+            tempSpot->SetPosition(j,i);
+            //tempSpot->SetPosition(make_pair(j,i));
             //add things to spot?
             tempRow->push_back(tempSpot);
         }
         cityLayout->push_back(tempRow);
     }
+
+
+
+
 
     //set center
     centerOnMap = make_pair(xCenter, yCenter); 
@@ -63,10 +70,13 @@ void city::AddPerimeterWalls(){
         for(int j=0;j<(cityLayout->at(i))->size();j++){//for each column
 
             //if on edges
-            isXZero = (((cityLayout->at(i))->at(j))->GetPosition()).first == 0;
-            isYZero = (((cityLayout->at(i))->at(j))->GetPosition()).second == 0;
-            isXMax = (((cityLayout->at(i))->at(j))->GetPosition()).first == cityLayout->size()-1;
-            isXZero = (((cityLayout->at(i))->at(j))->GetPosition()).second == (cityLayout->at(i))->size()-1;
+            isXZero = (((cityLayout->at(j))->at(i))->GetPosition()).first == 0;
+            isYZero = (((cityLayout->at(j))->at(i))->GetPosition()).second == 0;
+            isXMax = (((cityLayout->at(j))->at(i))->GetPosition()).first == cityLayout->size()-1;
+            isXZero = (((cityLayout->at(j))->at(i))->GetPosition()).second == (cityLayout->at(j))->size()-1;
+            cout << isXZero << isYZero << isXMax << isXZero << endl;
+            //cout << (((cityLayout->at(i))->at(j))->GetPosition()).first << (((cityLayout->at(i))->at(j))->GetPosition()).second << (((cityLayout->at(i))->at(j))->GetPosition()).first << (((cityLayout->at(i))->at(j))->GetPosition()).second << endl;
+
             if(isXZero || isYZero || isXMax || isXZero){
                 ((cityLayout->at(i))->at(j))->SetDisplayChar(219);//make it a "wall"
             }
