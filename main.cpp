@@ -12,7 +12,6 @@ using namespace std;
 int main()
 {
 
-    //std::cout << "Please Work" << std::endl;
     
     int boardHeight = 20;
     int boardWidth = 100;
@@ -25,7 +24,7 @@ int main()
 
     //make and insert cities
         //make city
-        city* testCity = new city(5,6,make_pair(10,30));//does not test board x and y
+        city* testCity = new city(5,6,make_pair(10,30));
         testCity->AddPerimeterWalls();
         testCity->SetName("SterzOpolis");
 

@@ -128,14 +128,14 @@ void board::SetDisplayChar(int xPos, int yPos, char displayChar){
 
 void board::PrintGrid(){
 
-    //system("CLS");
     cout <<"\n\n\n\n\n\n\n";
     //print grid to console
-    for(int i=0; i<grid->size();i++){
-        for(int j=0; j<(grid->at(i))->size();j++){
+    for(int i=0; i<grid->size();i++){//number of rows (y). This is not backwards
+        for(int j=0; j<(grid->at(i))->size();j++){//number of columns(x)
             
             //cout <<((grid->at(i))->at(j))->GetDisplayChar()<<" ";
             cout <<((grid->at(i))->at(j))->GetDisplayChar();
+            //position (x,y) is (grid->at(y))->at(x)
         }
         cout <<endl;
     }
@@ -188,26 +188,24 @@ void board::AddCity(city* newCity){
             return;
         }
 
-        /*old stuff
-        if((newCity->GetCenterOnMap()).first > (grid->at(0))->size() || (newCity->GetCenterOnMap()).second > grid->size() || (newCity->GetCenterOnMap()).first < 0 ||(newCity->GetCenterOnMap()).second < 0){
-            cout << "City center is outside of limits. " << endl;
-            cout <<"City x is: " << (newCity->GetCenterOnMap()).first <<" and grid x max is: "<<(grid->at(0))->size()<<endl;
-            cout << "City y is: " << (newCity->GetCenterOnMap()).second <<" and y grid max is: "<<grid->size()<<endl;;
-            //return;
-        }
-        */
-
-
         pair<int,int> center = newCity->GetCenterOnMap();
         int firstCenter = center.first;
         int secondCenter = center.second;
         int relativeXZero = firstCenter - xSize/2;
         int relativeYZero = secondCenter - ySize/2;
 
+        cout<<"xSize is: " << xSize<<endl;
+        cout<<"ySize is: " << ySize<<endl;
+        cout<<"city center is at ("<<firstCenter <<","<<secondCenter<<")"<<endl;
+        cout<<"relativeXZero is: " << relativeXZero<<endl;
+        cout<<"relativeYZero is: " << relativeYZero<<endl;
 
-        for(int i=relativeYZero;i<ySize+relativeYZero-1;i++){
-            for(int j=relativeXZero;j<xSize+relativeXZero-1;j++){
-                (grid->at(j))->at(i)->Copy(((newCity->GetCityLayout())->at(j-relativeXZero))->at(i-relativeYZero));//use copy function to copy spots over
+        for(int i=relativeYZero;i<ySize+relativeYZero-1;i++){//num rows (y)
+            for(int j=relativeXZero;j<xSize+relativeXZero-1;j++){//num columns (x)
+                cout <<"copying city spot (" <<(j-relativeXZero)<<","<<(i-relativeYZero)<<")"<<endl;
+                cout<<"To grid spot (" <<j<<","<<i<<")"<<endl;
+                cout <<"If grid spot valid, it will be noType" << ((grid->at(i))->at(j))->GetType()<<endl;
+                ((grid->at(i))->at(j))->Copy(((newCity->GetCityLayout())->at(j-relativeXZero))->at(i-relativeYZero));//use copy function to copy spots over
             }
         }
 

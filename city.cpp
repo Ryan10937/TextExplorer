@@ -16,7 +16,7 @@ city::city(int height, int width, pair<int,int> center){
     for(int i=0;i<height;i++){
         tempRow = new vector<spot*>;
         for(int j=0;j<width;j++){
-            tempSpot = new spot(219);
+            tempSpot = new spot(177);
             tempSpot->SetPosition(j,i);
             //tempSpot->SetPosition(make_pair(j,i));
             //add things to spot?
@@ -29,28 +29,9 @@ city::city(int height, int width, pair<int,int> center){
 
 }
 city::city(int height, int width, int xCenter, int yCenter){
-    cityLayout = new vector<vector<spot*>*>;
-    vector<spot*>* tempRow;
-    spot* tempSpot;
 
-    for(int i=0;i<height;i++){
-        tempRow = new vector<spot*>;
-        for(int j=0;j<width;j++){
-            tempSpot = new spot(219);
-            tempSpot->SetPosition(j,i);
-            //tempSpot->SetPosition(make_pair(j,i));
-            //add things to spot?
-            tempRow->push_back(tempSpot);
-        }
-        cityLayout->push_back(tempRow);
-    }
+    city(height, width, make_pair(xCenter, yCenter));
 
-
-
-
-
-    //set center
-    centerOnMap = make_pair(xCenter, yCenter); 
 }
 void city::AddEntity(entity* player, pair<int, int> playerPosition){
 
@@ -70,14 +51,19 @@ void city::AddPerimeterWalls(){
         for(int j=0;j<(cityLayout->at(i))->size();j++){//for each column
 
             //if on edges
-            isXZero = (((cityLayout->at(j))->at(i))->GetPosition()).first == 0;
-            isYZero = (((cityLayout->at(j))->at(i))->GetPosition()).second == 0;
-            isXMax = (((cityLayout->at(j))->at(i))->GetPosition()).first == cityLayout->size()-1;
-            isXZero = (((cityLayout->at(j))->at(i))->GetPosition()).second == (cityLayout->at(j))->size()-1;
-            cout << isXZero << isYZero << isXMax << isXZero << endl;
-            //cout << (((cityLayout->at(i))->at(j))->GetPosition()).first << (((cityLayout->at(i))->at(j))->GetPosition()).second << (((cityLayout->at(i))->at(j))->GetPosition()).first << (((cityLayout->at(i))->at(j))->GetPosition()).second << endl;
-
-            if(isXZero || isYZero || isXMax || isXZero){
+            isXZero = (((cityLayout->at(i))->at(j))->GetPosition()).first == 0;
+            isYZero = (((cityLayout->at(i))->at(j))->GetPosition()).second == 0;
+            isXMax = (((cityLayout->at(i))->at(j))->GetPosition()).first == ((cityLayout->at(i))->size())-1;
+            isYMax = (((cityLayout->at(i))->at(j))->GetPosition()).second == cityLayout->size()-1;
+            //cout << isXZero << isYZero << isXMax << isYMax << endl;
+            //cout << (((cityLayout->at(i))->at(j))->GetPosition()).first << (((cityLayout->at(i))->at(j))->GetPosition()).second << endl;
+            cout <<"x max is compared to: " << ((cityLayout->at(i))->size())-1<<endl;
+            cout <<"x position is: " << (((cityLayout->at(i))->at(j))->GetPosition()).first <<endl;
+            cout <<"isXMax is: " << isXMax << endl;
+            if(isXZero || isYZero || isXMax || isYMax){
+                if(isXMax){
+                    cout <<"isXmax is 1 in if statement"<<endl;
+                }
                 ((cityLayout->at(i))->at(j))->SetDisplayChar(219);//make it a "wall"
             }
         }
