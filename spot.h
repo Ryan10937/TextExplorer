@@ -35,9 +35,9 @@ class spot{
     void SetEntity(entity* player);
     void SetPlayer(entity* player);
     void RemoveEntity();//sets entity pointer to null
+    void CallEvent();
     ~spot();
 
-    //callEvent();
 
     private:
     char displayChar;
@@ -47,6 +47,7 @@ class spot{
     string type;
     bool hasPlayer;
     entity* player;
+    int eventID;
 };
 
 

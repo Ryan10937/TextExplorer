@@ -61,6 +61,7 @@ void board::AddNewEntity(entity* player, int xPos, int yPos){
     player->SetPosition(xPos,yPos);
 
 }
+/*
 void board::MoveEntity(string direction, entity* player){
     pair<int,int> position = player->GetPosition();
     char blockChar = 'a'+122;
@@ -116,6 +117,68 @@ void board::MoveEntity(string direction, entity* player){
 
     
     
+
+}
+*/
+void board::MoveEntity(string direction, entity* player){
+    pair<int,int> position = player->GetPosition();
+    char blockChar = 'a'+122;
+    char fogOfWarChar = fogOfWar;
+    //add player to spot each time moved
+        //to add player, call spot::addPlayer(entity* player)
+            //in that function, call spot's event after player assignment
+    //update grid
+    if(direction == "w" ){
+        if(((grid->at((position.second)-1))->at(position.first))->GetDisplayChar() == blockChar){
+            cout << "That space is blocked" << endl;
+            return;
+        }
+        //direction == "up";
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
+        ((grid->at(position.second))->at(position.first))->SetPlayer(NULL);//Remove player from spot
+        position.second = position.second - 1;//update position based on direction selection
+
+    }
+    if(direction == "a" ){
+        if(((grid->at(position.second))->at((position.first)-1))->GetDisplayChar() == blockChar){
+            cout << "That space is blocked" << endl;
+            return;
+        }
+        //direction == "left";
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
+        ((grid->at(position.second))->at(position.first))->SetPlayer(NULL);//Remove player from spot
+
+        position.first = position.first - 1;//update position based on direction selection
+
+    }
+    if(direction == "s" ){
+        if(((grid->at((position.second)+1))->at(position.first))->GetDisplayChar() == blockChar){
+            cout << "That space is blocked" << endl;
+            return;
+        }
+        //direction == "down";
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
+        ((grid->at(position.second))->at(position.first))->SetPlayer(NULL);//Remove player from spot
+
+        position.second = position.second + 1;//update position based on direction selection
+
+    }
+    if(direction == "d" ){
+        if(((grid->at(position.second))->at((position.first)+1))->GetDisplayChar() == blockChar){
+            cout << "That space is blocked" << endl;
+            return;
+        }
+        //direction == "right";
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
+        ((grid->at(position.second))->at(position.first))->SetPlayer(NULL);//Remove player from spot
+
+        position.first = position.first + 1;//update position based on direction selection
+    }
+
+    //now that position is updated, update player position, display character of spot moved to, and give that spot the player address
+    player->SetPosition(position);
+    ((grid->at(position.second))->at(position.first))->SetDisplayChar(player->GetDisplayChar());
+    ((grid->at(position.second))->at(position.first))->SetPlayer(player);   
 
 }
 
