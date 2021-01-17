@@ -33,6 +33,7 @@ class spot{
     void SetHasPlayer(bool hasPlayer);
     entity* GetEntity();
     void SetEntity(entity* player);
+    void SetPlayer(entity* player);
     void RemoveEntity();//sets entity pointer to null
     ~spot();
 

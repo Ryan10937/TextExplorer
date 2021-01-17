@@ -81,6 +81,13 @@ void spot::SetEntity(entity* player){
 void spot::RemoveEntity(){//sets entity pointer to null
     this->player = nullptr;
 }
+
+void spot::SetPlayer(entity* player){
+
+    this->player = player;
+}
+
+
 spot::~spot(){
     delete(player);
 }

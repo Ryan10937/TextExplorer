@@ -18,11 +18,8 @@ class entity{
     void SetPosition(int xPos, int yPos);
     char GetDisplayChar();
     void SetDisplayChar(char displayChar);
-    //void ShowMap(vector<vector<spot*>*>* map);
-    //void Move(string direction, vector<vector<spot*>*>* map);
-    string PromptPlayer(string prompt);
     void Attack(entity* enemy);
-    void EquipWeapon(item* weapon);
+    void SetWeapon(item* weapon);
 
 
     private:

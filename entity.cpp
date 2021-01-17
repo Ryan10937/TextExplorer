@@ -15,6 +15,8 @@ entity::entity(){
     this->weapon = new item;
     this->faction = "Nature";
     this->displayChar = 'D';
+    this->weapon = new item;
+    weapon->damage = 5;
 }
 
 pair<int,int> entity::GetPosition(){
@@ -37,7 +39,7 @@ void entity::SetDisplayChar(char displayChar){
 void entity::Attack(entity* enemy){
     enemy->currentHealth = enemy->currentHealth - weapon->damage;
 }
-void entity::EquipWeapon(item* weapon){
+void entity::SetWeapon(item* weapon){
 
     this->weapon = weapon;
 

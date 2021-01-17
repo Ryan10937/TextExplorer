@@ -6,7 +6,6 @@
 #include"spot.h"
 #include"entity.h"
 #include"iAmHere.h"
-#include"city.h"
 
 board::board(int boardHeight, int boardWidth){
     //create board
@@ -66,7 +65,9 @@ void board::MoveEntity(string direction, entity* player){
     pair<int,int> position = player->GetPosition();
     char blockChar = 'a'+122;
     char fogOfWarChar = fogOfWar;
-    
+    //add player to spot each time moved
+        //to add player, call spot::addPlayer(entity* player)
+            //in that function, call spot's event after player assignment
     //update grid
     if(direction == "w" ){
         if(((grid->at((position.second)-1))->at(position.first))->GetDisplayChar() == blockChar){
@@ -174,7 +175,7 @@ bool board::PromptPlayer(string prompt, entity* player){
     
 }
 
-
+/*
 void board::AddCity(city* newCity){
     //insert city in to board
         //find relative center based on size
@@ -213,7 +214,7 @@ void board::AddCity(city* newCity){
 
 }
 
-
+*/
 
 board::~board(){
     for(int i=0;i<grid->size();i++){
