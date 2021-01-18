@@ -19,6 +19,12 @@ entity::entity(){
     weapon->damage = 5;
 }
 
+void entity::SetHealth(float health)
+{
+    this->currentHealth = health;
+    this->maxHealth = health;
+}
+
 pair<int,int> entity::GetPosition(){
     return position;
 }

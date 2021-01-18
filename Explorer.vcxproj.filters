@@ -15,67 +15,61 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Explorer\a.exe" />
-    <None Include="Explorer\README.md" />
+    <None Include="a.exe" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Explorer\board.cpp">
+    <ClCompile Include="board.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Explorer\createItems.cpp">
+    <ClCompile Include="entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Explorer\entity.cpp">
+    <ClCompile Include="event.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Explorer\event.cpp">
+    <ClCompile Include="iAmHere.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Explorer\fetchQuest.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Explorer\fightEvent.cpp">
+    <ClCompile Include="spot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Explorer\iAmHere.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Explorer\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Explorer\spot.cpp">
+    <ClCompile Include="UserInputErrorChecking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Explorer\board.h">
+    <ClInclude Include="board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Explorer\createItems.h">
+    <ClInclude Include="entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Explorer\entity.h">
+    <ClInclude Include="event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Explorer\event.h">
+    <ClInclude Include="fetchQuest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Explorer\fetchQuest.h">
+    <ClInclude Include="fightEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Explorer\fightEvent.h">
+    <ClInclude Include="iAmHere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Explorer\iAmHere.h">
+    <ClInclude Include="item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Explorer\item.h">
+    <ClInclude Include="ItemTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Explorer\ItemTypes.h">
+    <ClInclude Include="spot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Explorer\spot.h">
+    <ClInclude Include="UserInputErrorChecking.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

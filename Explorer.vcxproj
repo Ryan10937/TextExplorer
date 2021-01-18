@@ -144,22 +144,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="board.cpp" />
-    <ClCompile Include="createItems.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="event.cpp" />
-    <ClCompile Include="fetchQuest.cpp" />
-    <ClCompile Include="fightEvent.cpp" />
     <ClCompile Include="iAmHere.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="UserInputErrorChecking.cpp" />
     <ClCompile Include="spot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.h" />
-    <ClInclude Include="createItems.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="event.h" />
     <ClInclude Include="fetchQuest.h" />
     <ClInclude Include="fightEvent.h" />
+    <ClInclude Include="UserInputErrorChecking.h" />
     <ClInclude Include="iAmHere.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="ItemTypes.h" />
