@@ -3,11 +3,13 @@
 
 #include<string>
 #include<vector>
+#include"entity.h"
 
 using namespace std;
 
 //this is the master parent class for all other quests/events
-class event{
+class event
+{
 
     public:
     //events here
@@ -17,6 +19,7 @@ class event{
     void SetIsCompleted(bool isCompleted);
     void GreetingMessage(string greeting);
     
+    void BearAttackEvent(entity* player);
 
     private:
     int eventID;

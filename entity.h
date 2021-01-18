@@ -20,6 +20,7 @@ class entity{
     void SetDisplayChar(char displayChar);
     void Attack(entity* enemy);
     void SetWeapon(item* weapon);
+    void SetHealth(float health);
 
 
     private:
