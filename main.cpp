@@ -14,7 +14,7 @@ int main()
     /*
     * 
     * TESTING FOR EVENTS
-    * 
+    *
     char playerChar = 'O';
     entity* player = new entity;
     player->SetDisplayChar(playerChar);
@@ -34,20 +34,8 @@ int main()
     gameMap->AddNewEntity(player,boardWidth/2,boardHeight/2);
     
 
+    gameMap->PrintGrid();
 
-/*
-    //make and insert cities
-        //make city
-        city* testCity = new city(5,6,make_pair(10,30));
-        testCity->AddPerimeterWalls();
-        testCity->SetName("SterzOpolis");
-
-        //insert city
-        gameMap->AddCity(testCity);
-        //InsertCity(gameMap);
-    
-        gameMap->PrintGrid();
-*/
     
     
     bool isQuitting = false;
@@ -71,7 +59,6 @@ int main()
     delete(gameMap);
     
     cout <<"Thank you for playing!"<<endl;
-    
 
     return 0;
 }

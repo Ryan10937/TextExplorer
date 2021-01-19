@@ -17,6 +17,7 @@ entity::entity(){
     this->displayChar = 'D';
     this->weapon = new item;
     weapon->damage = 5;
+    this->name = "noName";
 }
 
 void entity::SetHealth(float health)
@@ -59,4 +60,10 @@ void entity::SetWeapon(item* weapon){
 
     this->weapon = weapon;
 
+}
+void entity::SetName(string name){
+    this->name = name;
+}
+string entity::GetName(){
+    return name;
 }

@@ -23,6 +23,8 @@ class entity{
     void SetHealth(float health);
     float GetHealth();
     float GetDamage();
+    void SetName(string name);
+    string GetName();
 
     private:
     float currentHealth;
@@ -31,6 +33,8 @@ class entity{
     item* weapon;
     string faction;
     char displayChar;
+    string name;
+    vector<item*> inventory;//needs gets and sets
 
 
 };

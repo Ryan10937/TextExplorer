@@ -14,6 +14,7 @@ spot::spot(char fogOfWarChar){
     hasPlayer = false;
     entity* player = nullptr;
     hasEvent = false;
+    eventCollection = new event;
 }
 
 void spot::Copy(spot* newSpot) 
@@ -97,6 +98,11 @@ void spot::CallEvent(){
     //Zhu Li, do the thing!
 
     ///////////////////////////////////////////////////////////////////
+
+    //call event collection based on event number
+        //should switch-case statement go here or in event? Im thinking event but would like input 
+    
+
 
 }
 spot::~spot(){

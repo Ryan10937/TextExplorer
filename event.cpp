@@ -1,4 +1,5 @@
 #include"event.h"
+#include<vector>
 #include<string>
 #include<iostream>
 #include "UserInputErrorChecking.h"
@@ -142,4 +143,98 @@ void event::BearAttack(entity* player)
         delete(bear);
         return;
     }
+}
+
+
+void event::AngryMan(entity* player){
+
+    //Clear some lines for the event
+    for (size_t i = 0; i < 50; i++)
+    {
+        std::cout << std::endl;
+    }
+    int userInput=0;
+    int loopBreaker = 0;
+    entity* angryMan = new entity;
+    item* angryManWeapon = new item;
+    angryManWeapon->ID = 0002;
+    angryManWeapon->damage = 10;
+    angryManWeapon->isOwnedByPlayer = false;
+    angryManWeapon->value = 1000;
+    angryMan->SetWeapon(angryManWeapon);
+
+    cout <<"As you continue forward, you spot a man wearing a nobelman's clothes and a very expensive looking ring.\n ";
+    cout <<"He is walking quickly, stomping, and muttering something angrily. Although he clearly does not want to \nbe bothered, you are drawn to ask where he's off to\n";
+    
+    vector<string> choices{"1). Ask the man where he is going\n","2). Trip the man\n","3). Rob the man\n,","4). Do nothing\n"};
+    userInput = DisplayChoices(choices);
+
+    switch(userInput){
+////////////////////////////////////////////////////////////////////////////////////////////////
+        case(1):
+        cout <<player->GetName()<<": \"Sir, where are you going?\"\n";
+        cout <<"The man comes to a hault and turns to you. He is practically spitting in your face.\n";
+        cout <<"Angry Man: \"WHERE I am going and what I am doing is NONE of your business you maggot!\"\n";
+        choices = {"1). Push the man and draw your weapon\n","2). Rob the man\n","3). You never asked what he was doing...\n,","4). Say nothing and walk away\n"};
+        int userInput2 = DisplayChoices(choices);
+        switch(userInput2){
+            /////////////////////////////////
+            case(1):
+            cout<<"You push the man and draw your sword. The man recovers and reacts in kind.\n";
+            cout<<"Angry man: \"If it's a fight you want, it's a fight you'll get!\"\n";
+            //insert fight function between angryMan and player
+            return;
+            break;
+            /////////////////////////////////
+            case(2):
+            cout <<"You grab the man but he snakes free. He draws his sword.\n";
+            //insert fight function between angryMan and player
+            return;
+            break;
+            /////////////////////////////////
+            case(3):
+            cout <<player->GetName()<<"\"I never asked what you were doing, just where you were going.\"\n";
+            cout <<"Angry Man: *huffs* \"I am GOING to my cottage. Alone. I forgot something there. Happy?\"\n";
+                //yes
+                    //starts "Help the angry man" event chain
+                //no
+
+            break;
+            /////////////////////////////////
+            case(4):
+            cout <<"You walk away. All is well but your pride.\n";
+            cout <<"Angry Man: \"Run back to your mother, peasant.\"\n";
+            return;
+            break;
+            /////////////////////////////////
+        };
+
+        break;
+////////////////////////////////////////////////////////////////////////////////////////////////
+        case(2):
+
+        break;
+////////////////////////////////////////////////////////////////////////////////////////////////
+        case(3):
+
+        break;
+////////////////////////////////////////////////////////////////////////////////////////////////
+        case(4):
+
+        break;
+////////////////////////////////////////////////////////////////////////////////////////////////
+    };
+
+}
+
+int event::DisplayChoices(vector<string> choices){
+    int userInput;
+    for(int i=0;i<choices.size();i++){
+        cout <<choices.at(i);
+    }
+    while(userInput<1 || userInput > choices.size()-1){
+            cout<<"Select An answer from 1 to "<<choices.size()<<": ";
+            cin>>userInput;
+    }
+    return userInput;
 }

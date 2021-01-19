@@ -20,10 +20,14 @@ class event
     void GreetingMessage(string greeting);
     
     void BearAttack(entity* player);
+    void AngryMan(entity* player);
+    int DisplayChoices(vector<string> choices);
+
 
     private:
     int eventID;
     bool isCompleted;
+
 
 };
 
