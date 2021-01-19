@@ -14,15 +14,15 @@ int main()
     /*
     * 
     * TESTING FOR EVENTS
-    *
+    *    */
     char playerChar = 'O';
     entity* player = new entity;
     player->SetDisplayChar(playerChar);
     event* events = new event;
 
-    events->BearAttack(player);
-    */
-    
+    //events->BearAttack(player);
+    events->AngryMan(player);
+    /*
     int boardHeight = 20;
     int boardWidth = 100;
     char playerChar = 'O';
@@ -57,7 +57,7 @@ int main()
 
     delete(player);
     delete(gameMap);
-    
+    */
     cout <<"Thank you for playing!"<<endl;
 
     return 0;
