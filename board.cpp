@@ -28,7 +28,7 @@ board::board(int boardHeight, int boardWidth){
         grid->push_back(tempRow);
     }
 }
-vector<vector<spot*>*>* board::GetGrid(){
+vector<vector<spot*>* >* board::GetGrid(){
     return grid;
 }
 void board::AddNewEntity(int xPos, int yPos){
@@ -120,6 +120,7 @@ void board::MoveEntity(string direction, entity* player){
 
 }
 */
+
 void board::MoveEntity(string direction, entity* player){
     pair<int,int> position = player->GetPosition();
     char blockChar = 'a'+122;

@@ -19,7 +19,7 @@ class event
     void SetIsCompleted(bool isCompleted);
     void GreetingMessage(string greeting);
     
-    void BearAttackEvent(entity* player);
+    void BearAttack(entity* player);
 
     private:
     int eventID;

@@ -5,12 +5,23 @@
 #include"iAmHere.h"
 #include"entity.h"
 #include"board.h"
+#include "event.h"
 
 using namespace std;
 
 int main()
 {
+    /*
+    * 
+    * TESTING FOR EVENTS
+    * 
+    char playerChar = 'O';
+    entity* player = new entity;
+    player->SetDisplayChar(playerChar);
+    event* events = new event;
 
+    events->BearAttack(player);
+    */
     
     int boardHeight = 20;
     int boardWidth = 100;
@@ -21,6 +32,7 @@ int main()
     player->SetDisplayChar(playerChar);
     board* gameMap = new board(boardHeight,boardWidth);
     gameMap->AddNewEntity(player,boardWidth/2,boardHeight/2);
+    
 
 
 /*
@@ -59,5 +71,7 @@ int main()
     delete(gameMap);
     
     cout <<"Thank you for playing!"<<endl;
+    
+
     return 0;
 }

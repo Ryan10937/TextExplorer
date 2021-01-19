@@ -21,7 +21,8 @@ class entity{
     void Attack(entity* enemy);
     void SetWeapon(item* weapon);
     void SetHealth(float health);
-
+    float GetHealth();
+    float GetDamage();
 
     private:
     float currentHealth;
