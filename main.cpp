@@ -6,6 +6,7 @@
 #include"entity.h"
 #include"board.h"
 #include "event.h"
+#include"MainMenu.h"
 
 using namespace std;
 
@@ -24,6 +25,13 @@ int main()
     //events->BearAttack(player);
     events->AngryMan(player);
     */
+
+    int initialChoice = MainMenu();
+    if(initialChoice == 2){
+        cout <<"Game Exiting..."<<endl;
+        return 0;
+    }
+
     int boardHeight = 20;
     int boardWidth = 100;
     char playerChar = 'O';
