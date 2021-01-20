@@ -12,16 +12,19 @@ class event
 {
 
     public:
-    //events here
     bool GetIsCompleted();
     void SetIsCompleted(bool isCompleted);
     void GreetingMessage(string greeting);
     
+    //Events
     void BearAttack(entity* player);
     void AngryMan(entity* player);
+
+    //Event creation functions
     int DisplayChoices(vector<string> choices);
     void Fight(entity* player, entity* enemy);
 
+    //Call Event
     void CallEvent(int eventID,entity* player);
 
 
