@@ -22,6 +22,8 @@ void event::GreetingMessage(string greeting)
     cout << greeting << endl;
 }
 
+
+
 void event::BearAttack(entity* player)
 {
     //TODO ADD COLOR
@@ -30,6 +32,7 @@ void event::BearAttack(entity* player)
 
     entity* bear = new entity;
     bear->SetHealth(10);
+    bear->SetName("Bear");
 
     //Clear some lines for the event
     for (size_t i = 0; i < 50; i++)
@@ -61,72 +64,7 @@ void event::BearAttack(entity* player)
     std::cin.ignore(123, '\n');
     if (playersAction == 1)
     {
-        while (!isEventOver)
-        {
-            //Player Attacks bear
-            std::cout << "You swing your sword at the bear dealing " << player->GetDamage() << " damage" << std::endl;
-            player->Attack(bear);
-
-            //display health of both
-            std::cout << "Bear's health: " << bear->GetHealth() << std::endl;
-            std::cout << "Your health: " << player->GetHealth() << std::endl;
-
-            //press enter to continue
-            std::cout << "Press enter to continue..." << std::endl;
-            std::cin.ignore();
-
-            //Check if HP is 0
-            if (player->GetHealth() <= 0)
-            {
-                std::cout << "Player is dead" << std::endl;
-
-                std::cout << "Press enter to continue..." << std::endl;
-                std::cin.ignore();
-                delete(bear);
-                return;
-            }
-            else if (bear->GetHealth() <= 0)
-            {
-                std::cout << "You have killed the bear!" << std::endl;
-
-                std::cout << "Press enter to continue..." << std::endl;
-                std::cin.ignore();
-                delete(bear);
-                return;
-            }
-
-            //bear attacks player
-            std::cout << "The bear swipes at you dealing " << bear->GetDamage() << " damage" << std::endl;
-            bear->Attack(player);
-
-            //display health of both
-            std::cout << "Bear's health: " << bear->GetHealth() << std::endl;
-            std::cout << "Your health: " << player->GetHealth() << std::endl;
-
-            //Press enter to continue
-            std::cout << "Press enter to continue..." << std::endl;
-            std::cin.ignore();
-
-            //Check if either has 0 health
-            if (player->GetHealth() <= 0)
-            {
-                std::cout << "Player is dead" << std::endl;
-
-                std::cout << "Press enter to continue..." << std::endl;
-                std::cin.ignore();
-                delete(bear);
-                return;
-            }
-            else if (bear->GetHealth() <= 0)
-            {
-                std::cout << "You have killed the bear!" << std::endl;
-
-                std::cout << "Press enter to continue..." << std::endl;
-                std::cin.ignore();
-                delete(bear);
-                return;
-            }
-        }
+        Fight(player, bear);
     }
     else
     {
@@ -138,7 +76,6 @@ void event::BearAttack(entity* player)
         return;
     }
 }
-
 
 void event::AngryMan(entity* player){
 
