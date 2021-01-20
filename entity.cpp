@@ -20,6 +20,7 @@ entity::entity(){
     weapon->damage = 5;
     this->name = "noName";
     inventory = new vector<item*>; 
+    this->damage = 1;
 }
 
 void entity::SetHealth(float health)
