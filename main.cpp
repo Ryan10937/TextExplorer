@@ -26,7 +26,8 @@ int main()
     events->AngryMan(player);
     */
 
-    int initialChoice = MainMenu();
+    int initialChoice;
+    initialChoice = MainMenu();
     if(initialChoice == 2){
         cout <<"Game Exiting..."<<endl;
         return 0;
