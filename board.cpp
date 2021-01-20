@@ -61,65 +61,7 @@ void board::AddNewEntity(entity* player, int xPos, int yPos){
     player->SetPosition(xPos,yPos);
 
 }
-/*
-void board::MoveEntity(string direction, entity* player){
-    pair<int,int> position = player->GetPosition();
-    char blockChar = 'a'+122;
-    char fogOfWarChar = fogOfWar;
-    //add player to spot each time moved
-        //to add player, call spot::addPlayer(entity* player)
-            //in that function, call spot's event after player assignment
-    //update grid
-    if(direction == "w" ){
-        if(((grid->at((position.second)-1))->at(position.first))->GetDisplayChar() == blockChar){
-            cout << "That space is blocked" << endl;
-            return;
-        }
-        //direction == "up";
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);
-        position.second = position.second - 1;
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar(player->GetDisplayChar());
 
-    }
-    if(direction == "a" ){
-        if(((grid->at(position.second))->at((position.first)-1))->GetDisplayChar() == blockChar){
-            cout << "That space is blocked" << endl;
-            return;
-        }
-        //direction == "left";
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);
-        position.first = position.first - 1;
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar(player->GetDisplayChar());
-
-    }
-    if(direction == "s" ){
-        if(((grid->at((position.second)+1))->at(position.first))->GetDisplayChar() == blockChar){
-            cout << "That space is blocked" << endl;
-            return;
-        }
-        //direction == "down";
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);
-        position.second = position.second + 1;
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar(player->GetDisplayChar());
-
-    }
-    if(direction == "d" ){
-        if(((grid->at(position.second))->at((position.first)+1))->GetDisplayChar() == blockChar){
-            cout << "That space is blocked" << endl;
-            return;
-        }
-        //direction == "right";
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);
-        position.first = position.first + 1;
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar(player->GetDisplayChar());
-    }
-    player->SetPosition(position);
-
-    
-    
-
-}
-*/
 
 void board::MoveEntity(string direction, entity* player){
     pair<int,int> position = player->GetPosition();
