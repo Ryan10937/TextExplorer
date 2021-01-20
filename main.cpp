@@ -35,8 +35,8 @@ int main()
     gameMap->AddNewEntity(player,20,15);
     gameMap->SetSpotEventID(10,10,1);
     gameMap->SetSpotDisplayCharacter(10,10,'B');
-    gameMap->SetSpotEventID(30,15,2);
-    gameMap->SetSpotDisplayCharacter(30,15,'A');
+    gameMap->SetSpotEventID(23,15,2);
+    gameMap->SetSpotDisplayCharacter(23,15,'A');
 
     gameMap->PrintGrid();
 
