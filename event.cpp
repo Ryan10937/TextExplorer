@@ -199,7 +199,7 @@ void event::AngryMan(entity* player){
             case(3):
             cout <<player->GetName()<<"\"I never asked what you were doing, just where you were going.\"\n";
             cout <<"Angry Man: *huffs* \"I am GOING to my cottage. Alone. I forgot something there. Happy?\"\n";
-            choices = {"1). That was sufficient information, let the man be on his way ","2). Pry in to why the man is going back home"};
+            choices = {"1). That was sufficient information, let the man be on his way \n","2). Pry in to why the man is going back home\n"};
             userChoice3 = DisplayChoices(choices);
                 switch(userChoice3){
                     ///////////
@@ -212,7 +212,7 @@ void event::AngryMan(entity* player){
                     cout<<player->GetName()<<": \"What are you going back to get?\"\n";
                     cout<<"Angry Man: \"YOU WANNA KNOW WHAT I'M GETTING?!?! I'M GETTING A SWORD. A FUCKING SWORD DAMN IT! \n";
                     cout<<"A SWORD TO KILL A MAN WHO WAS ONCE MY FRIEND!! NOW LET ME BE!\"\n";
-                    choices = {"1). Let the man be","2). Offer to help kill his friend","3). Convince him not to kill his friend"};
+                    choices = {"1). Let the man be\n","2). Offer to help kill his friend\n","3). Convince him not to kill his friend\n"};
                     userChoice4 = DisplayChoices(choices);
                     switch(userChoice4){
                         /////
@@ -231,7 +231,7 @@ void event::AngryMan(entity* player){
                         cout<<" by the wind. The moon, the third accomplice, lights the way to the house of the transgressor.\n";
                         cout<<"There are 2 doors, one in front, the other in back. The man motions you to follow him to the back door.\n";
                         cout<<"The door is in front of you, you look to your accomplice, he motions you do go in first.\n";
-                        choices = {"1). Open the door and look around","2). Motion for the man to go in first"};
+                        choices = {"1). Open the door and look around","2). Motion for the man to go in first\n"};
                         userChoice5 = DisplayChoices(choices);
                         switch(userChoice5){
                             case(1):
@@ -241,7 +241,7 @@ void event::AngryMan(entity* player){
                             cout<<"As you turn towards the inside of the house, you feel a sharp pain in your back. \n";
                             cout <<"You look down to see a blade growing from your stomach. The dark room gets darker as you fall to the floor\n";
                             cout<<"While your conciousness fades, you see sparks from a duel between you accomplice and the victim.\n";
-                            cout<<"The victim's blade finds another kill, silencing your accomplice as well. You should have never come here...";
+                            cout<<"The victim's blade finds another kill, silencing your accomplice as well. You should have never come here...\n";
                             player->SetHealth(0);
                             return;
                             break;
