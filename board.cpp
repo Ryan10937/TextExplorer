@@ -162,6 +162,10 @@ bool board::PromptPlayer(string prompt, entity* player){
     cout << prompt << endl;
     cin >> answer;
 
+    for(int i=0; i<answer.size(); i++){
+        answer.at(i) = tolower(answer.at(i));
+    }
+
     
     cout <<setfill('=')<< setw(width) <<"=" <<endl;
     setfill(' '); 
