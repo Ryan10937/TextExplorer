@@ -460,7 +460,7 @@ bool event::MadMan(entity* player){
         case(1):
         cout<<"Old Man: *whispers* \"All are separate. All are one. From this prison I cannot run.\"\n\n ";
         if(hasRedStone){
-            cout <<"The Old Man looks up from the ground and grows his voice from a grumble to a should";
+            cout <<"The Old Man looks up from the ground and grows his voice from a grumble to a shout\n";
             cout <<"Old Man: it...IT is YOU. LEAVE AT ONCE YOU FILTHY BEAST!\n";
             cout <<"The Old Man slams the door. You respect the man's wishes and leave his home.\n\n";
             
@@ -506,10 +506,10 @@ bool event::MadMan(entity* player){
         cout<<"Old Man: \"Who are you traveler? What have you done to me?\"\n";
         cout<<player->GetName()<<": \"I have done nothing to you...\"\n";
         cout <<"Old Man: \"GIVE ME YOUR BAG, QUICKLY!\"\n";
-        choices = {"1). Give the man your bag\n","2). Walk away from the house\n"};
+        choices = {"1). Give the man your bag\n","2). Walk away from the house\n\n"};
         userChoice2 = DisplayChoices(choices);
         if(userChoice2 == 2){
-            cout <<"You run from the house.\n As you run, you can hear the Old Man descending into madness\n\n";
+            cout <<"\n\nYou run from the house.\n As you run, you can hear the Old Man descending into madness\n\n";
             return true;
         }
         player->RemoveInventoryItem(1110);//take red stone
