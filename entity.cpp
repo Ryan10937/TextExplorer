@@ -5,6 +5,7 @@
 #include<vector>
 #include<iomanip>
 #include"spot.h"
+#include"item.h"
 
 using namespace std;
 
@@ -18,6 +19,7 @@ entity::entity(){
     this->weapon = new item;
     weapon->damage = 5;
     this->name = "noName";
+    inventory = new vector<item*>; 
 }
 
 void entity::SetHealth(float health)
@@ -66,4 +68,50 @@ void entity::SetName(string name){
 }
 string entity::GetName(){
     return name;
+}
+
+void entity::SetInventory(vector<item*>* inventory){
+    this->inventory = inventory;
+}
+vector<item*>* entity::GetInventory(){
+    return inventory;
+}
+void entity::AddInventoryItem(item* itemToAdd){
+    inventory->push_back(itemToAdd);
+}
+void entity::RemoveInventoryItem(int itemID){
+    for(int i=0;i<inventory->size();i++){
+        if((inventory->at(i))->ID == itemID){
+            inventory->erase(inventory->begin() + i);
+        }
+    }
+}
+void entity::RemoveInventoryItem(string itemName){
+    for(int i=0;i<inventory->size();i++){
+        if((inventory->at(i))->name == itemName){
+            inventory->erase(inventory->begin() + i);
+        }
+    }
+}
+void entity::RemoveInventoryItem(item* itemToRemove){
+    RemoveInventoryItem(itemToRemove->ID);
+}
+bool entity::SearchItem(int itemID){
+    for(int i=0;i<inventory->size();i++){
+        if((inventory->at(i))->ID == itemID){
+            return true;
+        }
+    }
+    return false;
+}
+bool entity::SearchItem(string itemName){
+    for(int i=0;i<inventory->size();i++){
+        if((inventory->at(i))->name == itemName){
+            return true;
+        }
+    }
+    return false;
+}
+bool entity::SearchItem(item* itemToSearch){
+    SearchItem(itemToSearch->ID);
 }
