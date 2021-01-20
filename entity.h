@@ -22,9 +22,21 @@ class entity{
     void SetWeapon(item* weapon);
     void SetHealth(float health);
     float GetHealth();
-    float GetDamage();
+    float GetWeaponDamage();
     void SetName(string name);
     string GetName();
+    void SetInventory(vector<item*>* inventory);
+    vector<item*>* GetInventory();
+    void AddInventoryItem(item* itemToAdd);
+    void RemoveInventoryItem(int itemID);
+    void RemoveInventoryItem(string itemName);
+    void RemoveInventoryItem(item* itemToRemove);
+    bool SearchItem(int itemID);
+    bool SearchItem(string itemName);
+    bool SearchItem(item* itemToSearch);
+    float GetDamage();
+    void SetDamage(float damage);
+
 
     private:
     float currentHealth;
@@ -34,7 +46,8 @@ class entity{
     string faction;
     char displayChar;
     string name;
-    vector<item*> inventory;//needs gets and sets
+    vector<item*>* inventory;//needs gets and sets
+    float damage;
 
 
 };

@@ -333,6 +333,8 @@ void event::Fight(entity* player, entity* enemy){
     return;
 }
 
+
+
 void event::CallEvent(int eventID, entity* player){
     switch(eventID){
         case(1):

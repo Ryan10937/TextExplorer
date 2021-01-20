@@ -5,6 +5,7 @@
 #include<vector>
 #include<iomanip>
 #include"spot.h"
+#include"item.h"
 
 using namespace std;
 
@@ -18,6 +19,8 @@ entity::entity(){
     this->weapon = new item;
     weapon->damage = 5;
     this->name = "noName";
+    inventory = new vector<item*>; 
+    this->damage = 1;
 }
 
 void entity::SetHealth(float health)
@@ -31,7 +34,7 @@ float entity::GetHealth()
     return currentHealth;
 }
 
-float entity::GetDamage()
+float entity::GetWeaponDamage()
 {
     return weapon->damage;
 }
@@ -59,6 +62,7 @@ void entity::Attack(entity* enemy){
 void entity::SetWeapon(item* weapon){
 
     this->weapon = weapon;
+    damage = weapon->damage;
 
 }
 void entity::SetName(string name){
@@ -66,4 +70,58 @@ void entity::SetName(string name){
 }
 string entity::GetName(){
     return name;
+}
+
+void entity::SetInventory(vector<item*>* inventory){
+    this->inventory = inventory;
+}
+vector<item*>* entity::GetInventory(){
+    return inventory;
+}
+void entity::AddInventoryItem(item* itemToAdd){
+    inventory->push_back(itemToAdd);
+}
+void entity::RemoveInventoryItem(int itemID){
+    for(int i=0;i<inventory->size();i++){
+        if((inventory->at(i))->ID == itemID){
+            inventory->erase(inventory->begin() + i);
+        }
+    }
+}
+void entity::RemoveInventoryItem(string itemName){
+    for(int i=0;i<inventory->size();i++){
+        if((inventory->at(i))->name == itemName){
+            inventory->erase(inventory->begin() + i);
+        }
+    }
+}
+void entity::RemoveInventoryItem(item* itemToRemove){
+    RemoveInventoryItem(itemToRemove->ID);
+}
+bool entity::SearchItem(int itemID){
+    for(int i=0;i<inventory->size();i++){
+        if((inventory->at(i))->ID == itemID){
+            return true;
+        }
+    }
+    return false;
+}
+bool entity::SearchItem(string itemName){
+    for(int i=0;i<inventory->size();i++){
+        if((inventory->at(i))->name == itemName){
+            return true;
+        }
+    }
+    return false;
+}
+bool entity::SearchItem(item* itemToSearch){
+    SearchItem(itemToSearch->ID);
+}
+
+
+float entity::GetDamage(){
+    return damage;
+}
+void entity::SetDamage(float damage){
+    this->damage = damage;
 }
