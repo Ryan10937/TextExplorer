@@ -80,6 +80,7 @@ vector<item*>* entity::GetInventory(){
 }
 void entity::AddInventoryItem(item* itemToAdd){
     inventory->push_back(itemToAdd);
+    cout <<"\n"<<itemToAdd->name<<" added to inventory!\n";
 }
 void entity::RemoveInventoryItem(int itemID){
     for(int i=0;i<inventory->size();i++){
@@ -115,7 +116,7 @@ bool entity::SearchItem(string itemName){
     return false;
 }
 bool entity::SearchItem(item* itemToSearch){
-    SearchItem(itemToSearch->ID);
+    return SearchItem(itemToSearch->ID);
 }
 
 

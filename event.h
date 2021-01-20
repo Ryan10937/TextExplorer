@@ -19,6 +19,10 @@ class event
     //Events
     void BearAttack(entity* player);
     void AngryMan(entity* player);
+    void EncounterRedStone(entity* player);
+    void EncounterBlueStone(entity* player);
+    void EncounterYellowStone(entity* player);
+    void MadMan(entity* player);
 
     //Event creation functions
     int DisplayChoices(vector<string> choices);
@@ -31,6 +35,7 @@ class event
 
     private:
     bool isCompleted;   
+    void BeginEvent(string beginMessage);
 
 
 };

@@ -333,6 +333,216 @@ void event::Fight(entity* player, entity* enemy){
     return;
 }
 
+void event::BeginEvent(string beginMessage){
+    //Clear some lines for the event
+    for (size_t i = 0; i < 50; i++)
+    {
+        std::cout << std::endl;
+    }
+    cout<<"----------------------------------------------------------------\n";
+    cout <<beginMessage<<endl<<endl;
+}
+
+void event::EncounterRedStone(entity* player){
+    BeginEvent("You walk past a meadow and hear a faint rambling whisper");
+    cout<<"You walk towards the chatter, hoping to make sense of it\n\n";
+    cout<<"In disbelief, you come to the conclusion that the whispering is coming from a stone at your feet\n\n";
+    vector<string> choices{"1). Leave the stone\n","2). Take the stone with you\n"};
+    int userChoice = DisplayChoices(choices);
+    cout<<endl;
+    switch(userChoice){
+        case(1):
+        cout<<"You leave the stone, leaving its mystery for another\n";
+        break;
+
+        case(2):
+        cout <<"You pick up the stone. It is hot to the touch, likely from the sun.\n";
+        item* redStone = new item;
+        redStone->name = "Red Whispering Stone";
+        redStone->storyItem = true;
+        redStone->ID = 1110;
+        redStone->isOwnedByPlayer = true;
+        redStone->value = 50;
+        player->AddInventoryItem(redStone);
+        break;
+    };
+}
+void event::EncounterBlueStone(entity* player){
+    BeginEvent("As you walk forward, a sharp wind invites bitter cold air");
+    cout<<"Even through the whirring of the wind, you hear a rambling whisper. The words are jumbled.\n\n";
+    cout<<"You walk towards the chatter, hoping to make sense of it\n\n";
+    cout<<"In disbelief, you come to the conclusion that the whispering is coming from a stone at your feet\n\n";
+    vector<string> choices{"1). Leave the stone\n","2). Take the stone with you\n"};
+    int userChoice = DisplayChoices(choices);
+    cout<<endl;
+    switch(userChoice){
+        case(1):
+        cout<<"You leave the stone, leaving its mystery for another\n";
+        break;
+
+        case(2):
+        cout <<"You pick up the stone. It is cold to the touch, likely from the wind.\n";
+        item* blueStone = new item;
+        blueStone->name = "Blue Whispering Stone";
+        blueStone->storyItem = true;
+        blueStone->ID = 1111;
+        blueStone->isOwnedByPlayer = true;
+        blueStone->value = 50;
+        player->AddInventoryItem(blueStone);
+        break;
+    };
+}
+void event::EncounterYellowStone(entity* player){
+    BeginEvent("As you walk forward, clouds appear out of no where. A storm is brewing");
+    cout<<"In between the cracks of thunder, you hear a rambling whisper. The words are jumbled.\n\n";
+    cout<<"You walk towards the chatter, hoping to make sense of it\n\n";
+    cout<<"In disbelief, you come to the conclusion that the whispering is coming from a stone at your feet\n\n";
+    vector<string> choices{"1). Leave the stone\n","2). Take the stone with you\n"};
+    int userChoice = DisplayChoices(choices);
+    cout<<endl;
+    switch(userChoice){
+        case(1):
+        cout<<"You leave the stone, leaving its mystery for another\n";
+        break;
+
+        case(2):
+        cout <<"You pick up the stone. Its center is radiating light like a lamp, likely from a lightning strike.\n";
+        item* yellowStone = new item;
+        yellowStone->name = "Yellow Whispering Stone";
+        yellowStone->storyItem = true;
+        yellowStone->ID = 1112;
+        yellowStone->isOwnedByPlayer = true;
+        yellowStone->value = 50;
+        player->AddInventoryItem(yellowStone);
+        break;
+    };
+}
+void event::MadMan(entity* player){
+    bool hasRedStone = player->SearchItem(1110);
+    bool hasBlueStone = player->SearchItem(1111);
+    bool hasYellowStone = player->SearchItem(1112);
+
+    int userChoice=0;
+    int userChoice2=0;
+    int numberOfStones = hasRedStone + hasBlueStone + hasYellowStone;
+
+    
+    /*
+    //add 1 to number of stones for each stone collected
+    if(player->SearchItem(1110)){
+        numberOfStones++;
+    }
+    if(player->SearchItem(1111)){
+        numberOfStones++;
+    }
+    if(player->SearchItem(1112)){
+        numberOfStones++;
+    }*/
+
+    BeginEvent("You see the top of an old hut in the distance. Your curiosity throws you to its front porch.");
+
+    cout <<"Knock on the door?\n";
+    vector<string> choices{"1). Knock\n","2). Walk away from the house\n"};
+    userChoice = DisplayChoices(choices);
+    if(userChoice == 2){
+        cout <<"You walk away from the house, hearing rambling whispers from within\n";
+        return;
+    }
+    else{
+        cout <<"You walk to the door and knock 3 times.\n";
+        cout <<"An old man with countable hairs on his head opens the door\n";
+    }
+
+    switch(numberOfStones){
+        case(0):
+        cout<<"Old Man: *whispers* \"All are separate. All are one. From this prison I cannot run.\"\n\n ";
+        cout <<"Old Man: My home, though it be mine, cannot hold my broken mind.\n\n";
+        cout <<"The Old Man closes the door, leaving you with crawling skin and the will to walk away.";
+        break;
+
+        case(1):
+        cout<<"Old Man: *whispers* \"All are separate. All are one. From this prison I cannot run.\"\n\n ";
+        if(hasRedStone){
+            cout <<"The Old Man looks up from the ground and grows his voice from a grumble to a should";
+            cout <<"Old Man: it...IT is YOU. LEAVE AT ONCE YOU FILTHY BEAST!\n";
+            cout <<"The Old Man slams the door. You respect the man's wishes and leave his home.\n\n";
+            
+        }
+        if(hasBlueStone){
+            cout <<"Old Man: Years ago time split who was once mine\n";
+            cout<<"She is gone, but a shell remains\n\n";
+        }
+        if(hasYellowStone){
+            cout <<"Old Man: If only to be young again...Taverns, women, money, conquest.\n";
+            cout <<"Old Man: Why must fruit turn sour? Why must the day turn to night. Why does it have to end\n";
+            cout <<"The Old Man shuts the door\n\n";
+        }
+        break;
+
+        case(2):
+        cout<<"Old Man: *whispers* \"All are separate. All are one. From this prison I cannot run.\"\n\n ";
+        if(hasRedStone && hasBlueStone){
+            //doesnt have yellow
+            cout <<"The Old Man looks up at you and looks on the edge of tears.";
+            cout <<"The Old Man grits his teeth, draws a knife and lunges towards you.\n";
+            cout <<"You decide not to kill the Old Man and instead, let him be. He is clearly not well.\n\n";
+        }
+
+        if(hasRedStone && hasYellowStone){
+            //doesnt have blue
+            cout<<"Old Man: \"Give me 500 coins and I will spare your life.\"\n";
+            cout<<player->GetName()<<": *Laughing* \"If you can catch me, I'll give you 1000 coins\"\n";
+            cout<<"You run from the house. Something about the Old Man made you feel as if he, in fact, could take your life...\n\n";
+        }
+
+        if(hasYellowStone && hasBlueStone){
+            //doesnt have red
+            cout<<"Old Man: \"I beg you, kill me where I stand. I am but a shadow of my former self. I have nothing to live for.\"\n";
+            cout<<"Old Man: \"There is nothing in this life for me\"\n";
+            cout<<player->GetName()<<": \"I have no intention of killing you Old Man. I wish to help you.\"\n";
+            cout<<"The Old Man closes and locks the door. You hope you to see the man again.\n\n";
+        }
+        break;
+
+        case(3):
+        cout<<"Old Man: *whispers* \"All are separate. All are one. From this prison I cannot...wait...I feel.\"\n\n ";
+        cout<<"Old Man: \"Who are you traveler? What have you done to me?\"\n";
+        cout<<player->GetName()<<": \"I have done nothing to you...\"\n";
+        cout <<"Old Man: \"GIVE ME YOUR BAG, QUICKLY!\"\n";
+        choices = {"1). Give the man your bag\n","2). Walk away from the house\n"};
+        userChoice2 = DisplayChoices(choices);
+        if(userChoice2 == 2){
+            cout <<"You run from the house.\n As you run, you can hear the Old Man descending into madness\n\n";
+            return;
+        }
+        player->RemoveInventoryItem(1110);//take red stone
+        player->RemoveInventoryItem(1111);//take blue stone
+        player->RemoveInventoryItem(1112);//take yellow stone
+        cout <<"The Old Man dumps your bag and the floor and frantically takes hold of the Red, Blue, and Yellow Whispering Stones.\n";
+        cout <<"After placing them on the ground in front of him, he closes his eyes. The Old Man begins to convulse as streams of light\n";
+        cout <<"begin flowing from the stones to various parts of the Old Man's body.\n";
+        cout <<"Curled up on the floor, the Old Man begins to speak.\n";
+        cout <<"Old Man: \"Thank you traveller. \"\n";
+        choices = {"1). Ask the man what happened\n","2). Walk away from the house\n"};
+        userChoice2 = DisplayChoices(choices);
+        if(userChoice2 == 2){
+            cout <<"You leave the house, never knowing what happened to the Old Man.\n";
+            return;
+        }
+        cout <<"Old Man: \"Many years ago, I was married to an outstanding young woman. She was perfect.\"\n";
+        cout <<"Old Man: \"The world was perfect in my eyes. I had all I had ever wanted.\"\n";
+        cout <<"Old Man: \"Until one tragic day, the world took her from me. I didn't know how to handle it.\"\n";
+        cout <<"Old Man: \"After years of anger, despair, and desire, I turned to my magic to rid me of my pain.\"\n";
+        cout <<"Old Man: \"I casted each of these desires to a stone. After, an old friend of mine scattered them across the land.\"\n";
+        cout <<"Old Man: \"Little did I know, but I had also placed some of my conciousness into each of these stones. \"\n";
+        cout <<"Old Man: \"This eventually drove me to madness. I could feel the winters, summers, storms all from my home.\"\n";
+        cout <<"Old Man: \"The mind is not built for such a task. Especially an old mind like mine.\"\n";
+        cout <<"Old Man: \"Thank you traveller, I will always be grateful.\"\n";
+        cout <<"You leave the Old Man's house. He is given back the mind he once lost.";
+        break;
+    };
+    return;
+}
 
 
 void event::CallEvent(int eventID, entity* player){
@@ -343,6 +553,22 @@ void event::CallEvent(int eventID, entity* player){
         
         case(2):
         AngryMan(player);
+        break;
+
+        case(3):
+        EncounterRedStone(player);
+        break;
+
+        case(4):
+        EncounterBlueStone(player);
+        break;
+
+        case(5):
+        EncounterYellowStone(player);
+        break;
+
+        case(6):
+        MadMan(player);
         break;
 
         

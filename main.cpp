@@ -43,10 +43,24 @@ int main()
     player->SetDisplayChar(playerChar);
     board* gameMap = new board(boardHeight,boardWidth);
     gameMap->AddNewEntity(player,20,15);
-    gameMap->SetSpotEventID(10,10,1);
+
+
+    //Add Events to map
+    gameMap->SetSpotEventID(10,10,1);//add BearAttack()
     gameMap->SetSpotDisplayCharacter(10,10,'B');
-    gameMap->SetSpotEventID(23,15,2);
+    gameMap->SetSpotEventID(23,15,2);//add AngryMan
     gameMap->SetSpotDisplayCharacter(23,15,'A');    
+    gameMap->SetSpotEventID(25,16,3);//add EncounterRedStone()
+    gameMap->SetSpotDisplayCharacter(25,16,'@');    
+    gameMap->SetSpotEventID(26,17,4);//add EncounterBlueStone()
+    gameMap->SetSpotDisplayCharacter(26,17,'@');  
+    gameMap->SetSpotEventID(27,18,5);//add EncounterYellowStone()
+    gameMap->SetSpotDisplayCharacter(27,18,'@');   
+    gameMap->SetSpotEventID(30,15,6);//add MadMan()
+    gameMap->SetSpotDisplayCharacter(30,15,'H'); 
+
+
+
 
     gameMap->PrintGrid();
 

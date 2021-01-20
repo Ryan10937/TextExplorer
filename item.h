@@ -6,11 +6,12 @@
 
 struct item
 {
-    std::string name;
+    std::string name = "noItemName";
     int ID;
     bool isOwnedByPlayer;
     int value;
     float damage;
     int durability;
+    bool storyItem = false;
 };
 #endif
