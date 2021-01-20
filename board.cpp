@@ -14,7 +14,7 @@ board::board(int boardHeight, int boardWidth){
     spot* tempSpot;
     char borderChar = 219;
     fogOfWar = 177;
-
+    printMapEachTurn = true;
     for(int i=0; i<boardHeight;i++){
         tempRow = new vector<spot*>;
         for(int j=0; j<boardWidth;j++){
@@ -177,6 +177,9 @@ bool board::PromptPlayer(string prompt, entity* player){
     if(answer == "quit" || answer == "q"){
         return true;
     }
+    if(answer =="o"||answer  == "options"){
+        PrintOptionsMenu();
+    }
     return false;
     
 }
@@ -202,3 +205,51 @@ void board::SetSpotDisplayCharacter(int xPos, int yPos, char displayChar){
 
 }
 
+void board::SetPrintMapEachTurn(bool printMapEachTurn){
+    this->printMapEachTurn = printMapEachTurn;
+}
+bool board::GetPrintMapEachTurn(){
+    return printMapEachTurn;
+}
+
+void board::PrintOptionsMenu(){
+    cout<<"\n\n\n\n";
+    int userChoice2;
+    int userChoice;
+    cout<<"---------------------------------------------\n\n";
+    cout<<"Select a setting to change: \n";
+    vector<string> choices{"1). Return To Game\n","2). Map Print On Move\n"};
+    userChoice = DisplayChoices(choices);
+    cout<<"---------------------------------------------\n\n";
+    switch(userChoice){
+        case(1):
+        return;
+        break;
+        
+        case(2):
+        cout<<"---------------------------------------------\n\n";
+        cout<<"Select a value to change \"Map Print On Move\" to: \n";
+        vector<string> choices{"1). True\n","2). False\n"};
+        userChoice2 = DisplayChoices(choices);
+        if(userChoice2 == 1){
+            printMapEachTurn = true;
+        }
+        if(userChoice2 == 2){
+            printMapEachTurn = false;
+        }
+        cout<<"---------------------------------------------\n\n";
+        break;
+    };
+
+}
+int board::DisplayChoices(vector<string> choices){
+    int userInput=0;
+    for(int i=0;i<choices.size();i++){
+        cout <<choices.at(i);
+    }
+    while(userInput<1 || userInput > choices.size()){
+            cout<<"Select An answer from 1 to "<<choices.size()<<": ";
+            cin>>userInput;
+    }
+    return userInput;
+}

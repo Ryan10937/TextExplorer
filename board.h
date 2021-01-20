@@ -25,6 +25,10 @@ class board{
     bool PromptPlayer(string prompt, entity* player);//prompts the user for input, calls appropriate function after
     void SetSpotEventID(int xPos, int yPos, int eventID);
     void SetSpotDisplayCharacter(int xPos, int yPos, char displayChar);
+    void SetPrintMapEachTurn(bool printMapEachTurn);
+    bool GetPrintMapEachTurn();
+    void PrintOptionsMenu();
+    int DisplayChoices(vector<string> choices);
     ~board();
 
     
@@ -32,5 +36,6 @@ class board{
     private:
     vector<vector<spot*>*>* grid;//map
     char fogOfWar;//fog of war character
+    bool printMapEachTurn;
 };
 #endif

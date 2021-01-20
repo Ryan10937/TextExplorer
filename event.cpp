@@ -224,11 +224,12 @@ void event::AngryMan(entity* player){
                         /////
                         case(2):
                         cout<<player->GetName()<<": \"I've killed my fair share of backstabbers in the day. Want some help?\"\n";
-                        cout<<"Angry Man: \"As long as he dies, I don't care where you go\"\n";
+                        cout<<"Angry Man: \"As long as he dies, I don't care where you go\"\n\n";
+                        cout <<"-----------------------------------------------------------------";
                         cout<<"The two of you make a fire a few miles outside of town, not saying a word to each other.\n";
-                        cout<<"A few hours pass, the moon is high in the sky. The man decides it is time.\n";
+                        cout<<"A few hours pass, the moon is high in the sky. The man decides it is time.\n\n";
                         cout<<"The two of you walk in to town. The streets are quiet, the market is empty. The only sounds are those made\n";
-                        cout<<" by the wind. The moon, the third accomplice, lights the way to the house of the transgressor.\n";
+                        cout<<" by the wind. The moon, the third accomplice, lights the way to the house of the transgressor.\n\n";
                         cout<<"There are 2 doors, one in front, the other in back. The man motions you to follow him to the back door.\n";
                         cout<<"The door is in front of you, you look to your accomplice, he motions you do go in first.\n";
                         choices = {"1). Open the door and look around","2). Motion for the man to go in first\n"};
@@ -264,6 +265,8 @@ void event::AngryMan(entity* player){
                         case(3):
                         cout<<player->GetName()<<": \"Revenge is hardly ever worth it. They're not worth your time. \"\n";
                         cout <<"The angry man looks at you, disgusted. As he storms off, you hear weeping in the distance...\n";
+                        delete(angryMan);
+                        return;
                         break;
                         /////
                     };
@@ -406,5 +409,10 @@ void event::CallEvent(int eventID, entity* player){
         
     }
 }
+
+
+
+
+
 
 
