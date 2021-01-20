@@ -309,7 +309,7 @@ void event::AngryMan(entity* player){
 }
 
 int event::DisplayChoices(vector<string> choices){
-    int userInput;
+    int userInput=0;
     for(int i=0;i<choices.size();i++){
         cout <<choices.at(i);
     }
