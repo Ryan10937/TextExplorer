@@ -144,19 +144,23 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="board.cpp" />
+    <ClCompile Include="Color.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="event.cpp" />
     <ClCompile Include="iAmHere.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="UserInputErrorChecking.cpp" />
     <ClCompile Include="spot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="board.h" />
+    <ClInclude Include="Color.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="event.h" />
     <ClInclude Include="fetchQuest.h" />
     <ClInclude Include="fightEvent.h" />
+    <ClInclude Include="MainMenu.h" />
     <ClInclude Include="UserInputErrorChecking.h" />
     <ClInclude Include="iAmHere.h" />
     <ClInclude Include="item.h" />
