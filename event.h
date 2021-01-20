@@ -18,18 +18,18 @@ class event
     
     //Events
     void BearAttack(entity* player);
-    void AngryMan(entity* player);
-    void EncounterRedStone(entity* player);
-    void EncounterBlueStone(entity* player);
-    void EncounterYellowStone(entity* player);
-    void MadMan(entity* player);
+    bool AngryMan(entity* player);
+    bool EncounterRedStone(entity* player);
+    bool EncounterBlueStone(entity* player);
+    bool EncounterYellowStone(entity* player);
+    bool MadMan(entity* player);
 
     //Event creation functions
     int DisplayChoices(vector<string> choices);
     void Fight(entity* player, entity* enemy);
 
     //Call Event
-    void CallEvent(int eventID,entity* player);
+    bool CallEvent(int eventID,entity* player);
 
 
 

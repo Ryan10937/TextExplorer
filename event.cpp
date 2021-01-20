@@ -77,7 +77,7 @@ void event::BearAttack(entity* player)
     }
 }
 
-void event::AngryMan(entity* player){
+bool event::AngryMan(entity* player){
 
     //Clear some lines for the event
     for (size_t i = 0; i < 50; i++)
@@ -121,7 +121,7 @@ void event::AngryMan(entity* player){
             //insert fight function between angryMan and player
             Fight(player,angryMan);
             delete(angryMan);
-            return;
+            return false;
             break;
             /////////////////////////////////
             case(2):
@@ -129,7 +129,7 @@ void event::AngryMan(entity* player){
             //insert fight function between angryMan and player
             Fight(player,angryMan);
             delete(angryMan);
-            return;
+            return false;
             break;
             /////////////////////////////////
             case(3):
@@ -156,7 +156,7 @@ void event::AngryMan(entity* player){
                         cout<<player->GetName()<<": \"Alright alright sorry I ever asked...\"\n";
                         cout <<"You turn and leave the man, letting him stomp his way back to his cottage and perform his deed.\n";
                         delete(angryMan);
-                        return;
+                        return false;
                         break;
                         /////
                         case(2):
@@ -182,7 +182,7 @@ void event::AngryMan(entity* player){
                             cout<<"The victim's blade finds another kill, silencing your accomplice as well. You should have never come here...\n";
                             player->SetHealth(0);
                             delete(angryMan);
-                            return;
+                            return false;
                             break;
 
                             case(2):
@@ -203,7 +203,7 @@ void event::AngryMan(entity* player){
                         cout<<player->GetName()<<": \"Revenge is hardly ever worth it. They're not worth your time. \"\n";
                         cout <<"The angry man looks at you, disgusted. As he storms off, you hear weeping in the distance...\n";
                         delete(angryMan);
-                        return;
+                        return false;
                         break;
                         /////
                     };
@@ -218,7 +218,7 @@ void event::AngryMan(entity* player){
             cout <<"You walk away. All is well but your pride.\n";
             cout <<"Angry Man: \"Run back to your mother, peasant.\"\n";
             delete(angryMan);
-            return;
+            return false;
             break;
             /////////////////////////////////
         };
@@ -231,7 +231,7 @@ void event::AngryMan(entity* player){
         //fight between angry man and player
         Fight(player,angryMan);
         delete(angryMan);
-        return;
+        return false;
         break;
 ////////////////////////////////////////////////////////////////////////////////////////////////
         case(3):
@@ -241,19 +241,19 @@ void event::AngryMan(entity* player){
         //fight between angry man and player
         Fight(player,angryMan);
         delete(angryMan);
-        return;
+        return false;
         break;
 ////////////////////////////////////////////////////////////////////////////////////////////////
         case(4):
         cout<<"You let the man pass. You hear him muttering in the distance.\n";
         delete(angryMan);
-        return;
+        return false;
         break;
 ////////////////////////////////////////////////////////////////////////////////////////////////
     };      
     cout<<"default return used in event.cpp"<<endl; 
     delete(angryMan);
-    return;
+    return false;
 }
 
 int event::DisplayChoices(vector<string> choices){
@@ -343,7 +343,7 @@ void event::BeginEvent(string beginMessage){
     cout <<beginMessage<<endl<<endl;
 }
 
-void event::EncounterRedStone(entity* player){
+bool event::EncounterRedStone(entity* player){
     BeginEvent("You walk past a meadow and hear a faint rambling whisper");
     cout<<"You walk towards the chatter, hoping to make sense of it\n\n";
     cout<<"In disbelief, you come to the conclusion that the whispering is coming from a stone at your feet\n\n";
@@ -353,6 +353,7 @@ void event::EncounterRedStone(entity* player){
     switch(userChoice){
         case(1):
         cout<<"You leave the stone, leaving its mystery for another\n";
+        return true;
         break;
 
         case(2):
@@ -364,10 +365,12 @@ void event::EncounterRedStone(entity* player){
         redStone->isOwnedByPlayer = true;
         redStone->value = 50;
         player->AddInventoryItem(redStone);
+        return false;
         break;
     };
+    return true;
 }
-void event::EncounterBlueStone(entity* player){
+bool event::EncounterBlueStone(entity* player){
     BeginEvent("As you walk forward, a sharp wind invites bitter cold air");
     cout<<"Even through the whirring of the wind, you hear a rambling whisper. The words are jumbled.\n\n";
     cout<<"You walk towards the chatter, hoping to make sense of it\n\n";
@@ -378,6 +381,7 @@ void event::EncounterBlueStone(entity* player){
     switch(userChoice){
         case(1):
         cout<<"You leave the stone, leaving its mystery for another\n";
+        return true;
         break;
 
         case(2):
@@ -389,10 +393,12 @@ void event::EncounterBlueStone(entity* player){
         blueStone->isOwnedByPlayer = true;
         blueStone->value = 50;
         player->AddInventoryItem(blueStone);
+        return false;
         break;
     };
+    return true;
 }
-void event::EncounterYellowStone(entity* player){
+bool event::EncounterYellowStone(entity* player){
     BeginEvent("As you walk forward, clouds appear out of no where. A storm is brewing");
     cout<<"In between the cracks of thunder, you hear a rambling whisper. The words are jumbled.\n\n";
     cout<<"You walk towards the chatter, hoping to make sense of it\n\n";
@@ -403,6 +409,7 @@ void event::EncounterYellowStone(entity* player){
     switch(userChoice){
         case(1):
         cout<<"You leave the stone, leaving its mystery for another\n";
+        return true;
         break;
 
         case(2):
@@ -414,10 +421,12 @@ void event::EncounterYellowStone(entity* player){
         yellowStone->isOwnedByPlayer = true;
         yellowStone->value = 50;
         player->AddInventoryItem(yellowStone);
+        return false;
         break;
     };
+    return true;
 }
-void event::MadMan(entity* player){
+bool event::MadMan(entity* player){
     bool hasRedStone = player->SearchItem(1110);
     bool hasBlueStone = player->SearchItem(1111);
     bool hasYellowStone = player->SearchItem(1112);
@@ -426,18 +435,6 @@ void event::MadMan(entity* player){
     int userChoice2=0;
     int numberOfStones = hasRedStone + hasBlueStone + hasYellowStone;
 
-    
-    /*
-    //add 1 to number of stones for each stone collected
-    if(player->SearchItem(1110)){
-        numberOfStones++;
-    }
-    if(player->SearchItem(1111)){
-        numberOfStones++;
-    }
-    if(player->SearchItem(1112)){
-        numberOfStones++;
-    }*/
 
     BeginEvent("You see the top of an old hut in the distance. Your curiosity throws you to its front porch.");
 
@@ -446,7 +443,7 @@ void event::MadMan(entity* player){
     userChoice = DisplayChoices(choices);
     if(userChoice == 2){
         cout <<"You walk away from the house, hearing rambling whispers from within\n";
-        return;
+        return true;
     }
     else{
         cout <<"You walk to the door and knock 3 times.\n";
@@ -505,7 +502,7 @@ void event::MadMan(entity* player){
         break;
 
         case(3):
-        cout<<"Old Man: *whispers* \"All are separate. All are one. From this prison I cannot...wait...I feel.\"\n\n ";
+        cout<<"Old Man: *whispers* \"All are separate. All are one. From this prison I cannot...wait...I feel.\"\n\n";
         cout<<"Old Man: \"Who are you traveler? What have you done to me?\"\n";
         cout<<player->GetName()<<": \"I have done nothing to you...\"\n";
         cout <<"Old Man: \"GIVE ME YOUR BAG, QUICKLY!\"\n";
@@ -513,21 +510,21 @@ void event::MadMan(entity* player){
         userChoice2 = DisplayChoices(choices);
         if(userChoice2 == 2){
             cout <<"You run from the house.\n As you run, you can hear the Old Man descending into madness\n\n";
-            return;
+            return true;
         }
         player->RemoveInventoryItem(1110);//take red stone
         player->RemoveInventoryItem(1111);//take blue stone
         player->RemoveInventoryItem(1112);//take yellow stone
-        cout <<"The Old Man dumps your bag and the floor and frantically takes hold of the Red, Blue, and Yellow Whispering Stones.\n";
+        cout <<"\n\nThe Old Man dumps your bag and the floor and frantically takes hold of the Red, Blue, and Yellow Whispering Stones.\n";
         cout <<"After placing them on the ground in front of him, he closes his eyes. The Old Man begins to convulse as streams of light\n";
         cout <<"begin flowing from the stones to various parts of the Old Man's body.\n";
         cout <<"Curled up on the floor, the Old Man begins to speak.\n";
-        cout <<"Old Man: \"Thank you traveller. \"\n";
+        cout <<"\nOld Man: \"Thank you traveller. \"\n";
         choices = {"1). Ask the man what happened\n","2). Walk away from the house\n"};
         userChoice2 = DisplayChoices(choices);
         if(userChoice2 == 2){
             cout <<"You leave the house, never knowing what happened to the Old Man.\n";
-            return;
+            return true;
         }
         cout <<"Old Man: \"Many years ago, I was married to an outstanding young woman. She was perfect.\"\n";
         cout <<"Old Man: \"The world was perfect in my eyes. I had all I had ever wanted.\"\n";
@@ -539,40 +536,47 @@ void event::MadMan(entity* player){
         cout <<"Old Man: \"The mind is not built for such a task. Especially an old mind like mine.\"\n";
         cout <<"Old Man: \"Thank you traveller, I will always be grateful.\"\n";
         cout <<"You leave the Old Man's house. He is given back the mind he once lost.";
+        return false;
         break;
     };
-    return;
+    return true;
 }
 
 
-void event::CallEvent(int eventID, entity* player){
+bool event::CallEvent(int eventID, entity* player){
+    bool keepSymbol = false;
     switch(eventID){
+        case(0):
+        return true;
+        break;
         case(1):
         BearAttack(player);
+        return false;
         break;
         
         case(2):
-        AngryMan(player);
+        keepSymbol = AngryMan(player);
         break;
 
         case(3):
-        EncounterRedStone(player);
+        keepSymbol = EncounterRedStone(player);
         break;
 
         case(4):
-        EncounterBlueStone(player);
+        keepSymbol = EncounterBlueStone(player);
         break;
 
         case(5):
-        EncounterYellowStone(player);
+        keepSymbol = EncounterYellowStone(player);
         break;
 
         case(6):
-        MadMan(player);
+        keepSymbol = MadMan(player);
         break;
 
         
     }
+    return keepSymbol;
 }
 
 

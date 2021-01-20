@@ -77,7 +77,9 @@ void board::MoveEntity(string direction, entity* player){
             return;
         }
         //direction == "up";
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
+        if(((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0){
+            ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
+        }
         ((grid->at(position.second))->at(position.first))->SetPlayer(NULL);//Remove player from spot
         position.second = position.second - 1;//update position based on direction selection
 
@@ -88,7 +90,9 @@ void board::MoveEntity(string direction, entity* player){
             return;
         }
         //direction == "left";
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
+        if(((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0){
+            ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
+        }
         ((grid->at(position.second))->at(position.first))->SetPlayer(NULL);//Remove player from spot
 
         position.first = position.first - 1;//update position based on direction selection
@@ -100,7 +104,9 @@ void board::MoveEntity(string direction, entity* player){
             return;
         }
         //direction == "down";
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
+        if(((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0){
+            ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
+        }
         ((grid->at(position.second))->at(position.first))->SetPlayer(NULL);//Remove player from spot
 
         position.second = position.second + 1;//update position based on direction selection
@@ -112,7 +118,9 @@ void board::MoveEntity(string direction, entity* player){
             return;
         }
         //direction == "right";
-        ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
+        if(((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0){
+            ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
+        }
         ((grid->at(position.second))->at(position.first))->SetPlayer(NULL);//Remove player from spot
 
         position.first = position.first + 1;//update position based on direction selection
@@ -120,7 +128,9 @@ void board::MoveEntity(string direction, entity* player){
 
     //now that position is updated, update player position, display character of spot moved to, and give that spot the player address
     player->SetPosition(position);
-    ((grid->at(position.second))->at(position.first))->SetDisplayChar(player->GetDisplayChar());
+    if(((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0){
+        ((grid->at(position.second))->at(position.first))->SetDisplayChar(player->GetDisplayChar());
+    }
     ((grid->at(position.second))->at(position.first))->SetPlayer(player);   
 
 }

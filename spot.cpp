@@ -15,6 +15,8 @@ spot::spot(char fogOfWarChar){
     entity* player = nullptr;
     hasEvent = false;
     eventCollection = new event;
+    keepSymbol = true;
+    eventID = 0;
 }
 
 void spot::Copy(spot* newSpot) 
@@ -99,13 +101,25 @@ void spot::CallEvent(){
 
     ///////////////////////////////////////////////////////////////////
 
-    eventCollection->CallEvent(eventID, player);
+    keepSymbol = eventCollection->CallEvent(eventID, player);
     
 
 }
 void spot::SetEventID(int eventID){
     this->eventID = eventID;
 }
+int spot::GetEventID(){
+    return eventID;
+}
+
+
+void spot::SetKeepSymbol(bool keepSymbol){
+    this->keepSymbol = keepSymbol;
+}
+bool spot::GetKeepSymbol(){
+    return keepSymbol;
+}
+
 
 spot::~spot(){
     delete(player);
