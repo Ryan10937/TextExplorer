@@ -33,7 +33,7 @@ float entity::GetHealth()
     return currentHealth;
 }
 
-float entity::GetDamage()
+float entity::GetWeaponDamage()
 {
     return weapon->damage;
 }
@@ -61,6 +61,7 @@ void entity::Attack(entity* enemy){
 void entity::SetWeapon(item* weapon){
 
     this->weapon = weapon;
+    damage = weapon->damage;
 
 }
 void entity::SetName(string name){
@@ -114,4 +115,12 @@ bool entity::SearchItem(string itemName){
 }
 bool entity::SearchItem(item* itemToSearch){
     SearchItem(itemToSearch->ID);
+}
+
+
+float entity::GetDamage(){
+    return damage;
+}
+void entity::SetDamage(float damage){
+    this->damage = damage;
 }
