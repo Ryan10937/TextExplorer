@@ -154,6 +154,10 @@ void event::AngryMan(entity* player){
         std::cout << std::endl;
     }
     int userChoice=0;
+    int userChoice2 = 0;
+    int userChoice3 = 0;
+    int userChoice4 = 0;
+    int userChoice5 = 0;
     int loopBreaker = 0;
     entity* angryMan = new entity;
     item* angryManWeapon = new item;
@@ -166,7 +170,7 @@ void event::AngryMan(entity* player){
     cout <<"As you continue forward, you spot a man wearing a nobelman's clothes and a very expensive looking ring.\n ";
     cout <<"He is walking quickly, stomping, and muttering something angrily. Although he clearly does not want to \nbe bothered, you are drawn to ask where he's off to\n";
     
-    vector<string> choices{"1). Ask the man where he is going\n","2). Trip the man\n","3). Rob the man\n,","4). Do nothing\n"};
+    vector<string> choices{"1). Ask the man where he is going\n","2). Trip the man\n","3). Rob the man\n","4). Do nothing\n"};
     userChoice = DisplayChoices(choices);
 
     switch(userChoice){
@@ -175,8 +179,8 @@ void event::AngryMan(entity* player){
         cout <<player->GetName()<<": \"Sir, where are you going?\"\n";
         cout <<"The man comes to a hault and turns to you. He is practically spitting in your face.\n";
         cout <<"Angry Man: \"WHERE I am going and what I am doing is NONE of your business you maggot!\"\n";
-        choices = {"1). Push the man and draw your weapon\n","2). Rob the man\n","3). You never asked what he was doing...\n,","4). Say nothing and walk away\n"};
-        int userChoice2 = DisplayChoices(choices);
+        choices = {"1). Push the man and draw your weapon\n","2). Rob the man\n","3). You never asked what he was doing...\n","4). Say nothing and walk away\n"};
+        userChoice2 = DisplayChoices(choices);
         switch(userChoice2){
             /////////////////////////////////
             case(1):
@@ -196,7 +200,7 @@ void event::AngryMan(entity* player){
             cout <<player->GetName()<<"\"I never asked what you were doing, just where you were going.\"\n";
             cout <<"Angry Man: *huffs* \"I am GOING to my cottage. Alone. I forgot something there. Happy?\"\n";
             choices = {"1). That was sufficient information, let the man be on his way ","2). Pry in to why the man is going back home"};
-            int userChoice3 = DisplayChoices(choices);
+            userChoice3 = DisplayChoices(choices);
                 switch(userChoice3){
                     ///////////
                     case(1):
@@ -209,7 +213,7 @@ void event::AngryMan(entity* player){
                     cout<<"Angry Man: \"YOU WANNA KNOW WHAT I'M GETTING?!?! I'M GETTING A SWORD. A FUCKING SWORD DAMN IT! \n";
                     cout<<"A SWORD TO KILL A MAN WHO WAS ONCE MY FRIEND!! NOW LET ME BE!\"\n";
                     choices = {"1). Let the man be","2). Offer to help kill his friend","3). Convince him not to kill his friend"};
-                    int userChoice4 = DisplayChoices(choices);
+                    userChoice4 = DisplayChoices(choices);
                     switch(userChoice4){
                         /////
                         case(1):
@@ -228,7 +232,7 @@ void event::AngryMan(entity* player){
                         cout<<"There are 2 doors, one in front, the other in back. The man motions you to follow him to the back door.\n";
                         cout<<"The door is in front of you, you look to your accomplice, he motions you do go in first.\n";
                         choices = {"1). Open the door and look around","2). Motion for the man to go in first"};
-                        int userChoice5 = DisplayChoices(choices);
+                        userChoice5 = DisplayChoices(choices);
                         switch(userChoice5){
                             case(1):
                             cout<<"You nod in agreement and slowly turn the knob. You slowly move the door from its frame.\n";
@@ -309,7 +313,7 @@ int event::DisplayChoices(vector<string> choices){
     for(int i=0;i<choices.size();i++){
         cout <<choices.at(i);
     }
-    while(userInput<1 || userInput > choices.size()-1){
+    while(userInput<1 || userInput > choices.size()){
             cout<<"Select An answer from 1 to "<<choices.size()<<": ";
             cin>>userInput;
     }
