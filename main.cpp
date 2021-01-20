@@ -14,7 +14,7 @@ int main()
     /*
     * 
     * TESTING FOR EVENTS
-    *    */
+    *    
     char playerChar = 'O';
     entity* player = new entity;
     player->SetDisplayChar(playerChar);
@@ -23,7 +23,7 @@ int main()
 
     //events->BearAttack(player);
     events->AngryMan(player);
-    /*
+    */
     int boardHeight = 20;
     int boardWidth = 100;
     char playerChar = 'O';
@@ -32,8 +32,11 @@ int main()
     entity* player = new entity;
     player->SetDisplayChar(playerChar);
     board* gameMap = new board(boardHeight,boardWidth);
-    gameMap->AddNewEntity(player,boardWidth/2,boardHeight/2);
-    
+    gameMap->AddNewEntity(player,20,15);
+    gameMap->SetSpotEventID(10,10,1);
+    gameMap->SetSpotDisplayCharacter(10,10,'B');
+    gameMap->SetSpotEventID(30,15,2);
+    gameMap->SetSpotDisplayCharacter(30,15,'A');
 
     gameMap->PrintGrid();
 
@@ -58,7 +61,7 @@ int main()
 
     delete(player);
     delete(gameMap);
-    */
+
     cout <<"Thank you for playing!"<<endl;
 
     return 0;

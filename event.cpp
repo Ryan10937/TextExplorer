@@ -9,14 +9,6 @@
 
 using namespace std;
 
-int event::GetEventID()
-{
-    return eventID;
-}
-void event::SetEventID(int ID)
-{
-    this->eventID = ID;
-}
 bool event::GetIsCompleted()
 {
     return isCompleted;
@@ -191,7 +183,7 @@ void event::AngryMan(entity* player){
             cout<<"Angry man: \"If it's a fight you want, it's a fight you'll get!\"\n";
             //insert fight function between angryMan and player
             Fight(player,angryMan);
-
+            delete(angryMan);
             return;
             break;
             /////////////////////////////////
@@ -199,7 +191,7 @@ void event::AngryMan(entity* player){
             cout <<"You grab the man but he snakes free. He draws his sword.\n";
             //insert fight function between angryMan and player
             Fight(player,angryMan);
-
+            delete(angryMan);
             return;
             break;
             /////////////////////////////////
@@ -226,6 +218,7 @@ void event::AngryMan(entity* player){
                         case(1):
                         cout<<player->GetName()<<": \"Alright alright sorry I ever asked...\"\n";
                         cout <<"You turn and leave the man, letting him stomp his way back to his cottage and perform his deed.\n";
+                        delete(angryMan);
                         return;
                         break;
                         /////
@@ -250,6 +243,7 @@ void event::AngryMan(entity* player){
                             cout<<"While your conciousness fades, you see sparks from a duel between you accomplice and the victim.\n";
                             cout<<"The victim's blade finds another kill, silencing your accomplice as well. You should have never come here...\n";
                             player->SetHealth(0);
+                            delete(angryMan);
                             return;
                             break;
 
@@ -262,7 +256,7 @@ void event::AngryMan(entity* player){
                             cout<<"Guard:\"No! Stop!\"\n";
                             cout<<"The man darts in to the house, only to run in to the victim's sword. Your accomplice is dead.\n";
                             cout<<"You are sent to life in prison for attempted murder\n";
-                            player->SetHealth(0);
+                            player->SetHealth(0);//could set position to a jail in a city instead...
                             break;
                         };
                         break;
@@ -283,6 +277,7 @@ void event::AngryMan(entity* player){
             case(4):
             cout <<"You walk away. All is well but your pride.\n";
             cout <<"Angry Man: \"Run back to your mother, peasant.\"\n";
+            delete(angryMan);
             return;
             break;
             /////////////////////////////////
@@ -295,6 +290,7 @@ void event::AngryMan(entity* player){
         cout<<"Angry Man: \"I am NOT in the mood for games. Draw your sword.\"\n";
         //fight between angry man and player
         Fight(player,angryMan);
+        delete(angryMan);
         return;
         break;
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -304,17 +300,19 @@ void event::AngryMan(entity* player){
         cout<<"The man breaks free, drawing his sword.\n";
         //fight between angry man and player
         Fight(player,angryMan);
-
+        delete(angryMan);
         return;
         break;
 ////////////////////////////////////////////////////////////////////////////////////////////////
         case(4):
         cout<<"You let the man pass. You hear him muttering in the distance.\n";
+        delete(angryMan);
         return;
         break;
 ////////////////////////////////////////////////////////////////////////////////////////////////
     };      
     cout<<"default return used in event.cpp"<<endl; 
+    delete(angryMan);
     return;
 }
 
@@ -367,11 +365,13 @@ void event::Fight(entity* player, entity* enemy){
                     escapeNum = rand() % 3;
                     if(escapeNum <= 1){
                         didEscape = true;
+                        cout<<"---------------------------------------------" << endl;
                         cout <<"Got away safely!"<<endl;
                         
                     }
                     else{
                         didEscape = false;
+                    cout<<"---------------------------------------------" << endl;
                         cout<<"You try to escape, but fail!"<<endl;
                     }
                 }
@@ -393,5 +393,18 @@ void event::Fight(entity* player, entity* enemy){
     return;
 }
 
+void event::CallEvent(int eventID, entity* player){
+    switch(eventID){
+        case(1):
+        BearAttack(player);
+        break;
+        
+        case(2):
+        AngryMan(player);
+        break;
+
+        
+    }
+}
 
 

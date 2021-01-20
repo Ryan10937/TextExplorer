@@ -99,12 +99,14 @@ void spot::CallEvent(){
 
     ///////////////////////////////////////////////////////////////////
 
-    //call event collection based on event number
-        //should switch-case statement go here or in event? Im thinking event but would like input 
+    eventCollection->CallEvent(eventID, player);
     
 
-
 }
+void spot::SetEventID(int eventID){
+    this->eventID = eventID;
+}
+
 spot::~spot(){
     delete(player);
 }

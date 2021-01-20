@@ -13,8 +13,6 @@ class event
 
     public:
     //events here
-    int GetEventID();
-    void SetEventID(int ID);
     bool GetIsCompleted();
     void SetIsCompleted(bool isCompleted);
     void GreetingMessage(string greeting);
@@ -24,11 +22,12 @@ class event
     int DisplayChoices(vector<string> choices);
     void Fight(entity* player, entity* enemy);
 
+    void CallEvent(int eventID,entity* player);
+
 
 
     private:
-    int eventID;
-    bool isCompleted;
+    bool isCompleted;   
 
 
 };

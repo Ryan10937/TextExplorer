@@ -181,47 +181,6 @@ bool board::PromptPlayer(string prompt, entity* player){
     
 }
 
-/*
-void board::AddCity(city* newCity){
-    //insert city in to board
-        //find relative center based on size
-        int ySize = (newCity->GetCityLayout())->size();
-        int xSize = ((newCity->GetCityLayout())->at(0))->size();
-        if((newCity->GetCenterOnMap()).second > (grid->at(0))->size() || (newCity->GetCenterOnMap()).first > grid->size() || (newCity->GetCenterOnMap()).second < 0 ||(newCity->GetCenterOnMap()).first < 0){
-            cout << "City center is outside of limits. " << endl;
-            cout <<"City x is: " << (newCity->GetCenterOnMap()).first <<" and grid x max is: "<<(grid->at(0))->size()<<endl;
-            cout << "City y is: " << (newCity->GetCenterOnMap()).second <<" and y grid max is: "<<grid->size()<<endl;
-            cout <<"City " <<newCity->GetName()<<" rejected"<<endl;
-            return;
-        }
-
-        pair<int,int> center = newCity->GetCenterOnMap();
-        int firstCenter = center.first;
-        int secondCenter = center.second;
-        int relativeXZero = firstCenter - xSize/2;
-        int relativeYZero = secondCenter - ySize/2;
-
-        cout<<"xSize is: " << xSize<<endl;
-        cout<<"ySize is: " << ySize<<endl;
-        cout<<"city center is at ("<<firstCenter <<","<<secondCenter<<")"<<endl;
-        cout<<"relativeXZero is: " << relativeXZero<<endl;
-        cout<<"relativeYZero is: " << relativeYZero<<endl;
-
-        for(int i=relativeYZero;i<ySize+relativeYZero-1;i++){//num rows (y)
-            for(int j=relativeXZero;j<xSize+relativeXZero-1;j++){//num columns (x)
-                cout <<"copying city spot (" <<(j-relativeXZero)<<","<<(i-relativeYZero)<<")"<<endl;
-                cout<<"To grid spot (" <<j<<","<<i<<")"<<endl;
-                cout <<"If grid spot valid, it will be noType" << ((grid->at(i))->at(j))->GetType()<<endl;
-                ((grid->at(i))->at(j))->Copy(((newCity->GetCityLayout())->at(j-relativeXZero))->at(i-relativeYZero));//use copy function to copy spots over
-            }
-        }
-
-        //using that center, find 0,0 on the board
-
-}
-
-*/
-
 board::~board(){
     for(int i=0;i<grid->size();i++){
         for(int j=0;j<(grid->at(i))->size();j++){
@@ -231,3 +190,15 @@ board::~board(){
     }
     delete(grid);
 }
+
+
+
+void board::SetSpotEventID(int xPos, int yPos, int eventID){
+    ((grid->at(yPos))->at(xPos))->SetEventID(eventID);
+}
+
+void board::SetSpotDisplayCharacter(int xPos, int yPos, char displayChar){
+    ((grid->at(yPos))->at(xPos))->SetDisplayChar(displayChar);
+
+}
+

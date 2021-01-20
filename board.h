@@ -23,6 +23,8 @@ class board{
     void SetDisplayChar(int xPos, int yPos, char displayChar);//sets display character of the spot at (xPos,yPos)
     void PrintGrid(); //Prints map
     bool PromptPlayer(string prompt, entity* player);//prompts the user for input, calls appropriate function after
+    void SetSpotEventID(int xPos, int yPos, int eventID);
+    void SetSpotDisplayCharacter(int xPos, int yPos, char displayChar);
     ~board();
 
     
