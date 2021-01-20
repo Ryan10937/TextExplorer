@@ -24,6 +24,7 @@ int main()
     //events->BearAttack(player);
     events->AngryMan(player);
     */
+
     int boardHeight = 20;
     int boardWidth = 100;
     char playerChar = 'O';
