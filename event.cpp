@@ -4,6 +4,8 @@
 #include<iostream>
 #include "UserInputErrorChecking.h"
 #include "entity.h"
+#include<random>
+#include<ctime>
 
 using namespace std;
 
@@ -159,12 +161,13 @@ void event::AngryMan(entity* player){
     int userChoice4 = 0;
     int userChoice5 = 0;
     int loopBreaker = 0;
-    entity* angryMan = new entity;
     item* angryManWeapon = new item;
     angryManWeapon->ID = 0002;
     angryManWeapon->damage = 10;
     angryManWeapon->isOwnedByPlayer = false;
     angryManWeapon->value = 1000;
+    entity* angryMan = new entity;
+    angryMan->SetName("Angry Man");
     angryMan->SetWeapon(angryManWeapon);
 
     cout <<"As you continue forward, you spot a man wearing a nobelman's clothes and a very expensive looking ring.\n ";
@@ -187,12 +190,16 @@ void event::AngryMan(entity* player){
             cout<<"You push the man and draw your sword. The man recovers and reacts in kind.\n";
             cout<<"Angry man: \"If it's a fight you want, it's a fight you'll get!\"\n";
             //insert fight function between angryMan and player
+            Fight(player,angryMan);
+
             return;
             break;
             /////////////////////////////////
             case(2):
             cout <<"You grab the man but he snakes free. He draws his sword.\n";
             //insert fight function between angryMan and player
+            Fight(player,angryMan);
+
             return;
             break;
             /////////////////////////////////
@@ -287,6 +294,7 @@ void event::AngryMan(entity* player){
         cout<<"You stick out your foot and the angry man trips. He tumbles on the groud.\n";
         cout<<"Angry Man: \"I am NOT in the mood for games. Draw your sword.\"\n";
         //fight between angry man and player
+        Fight(player,angryMan);
         return;
         break;
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -295,6 +303,8 @@ void event::AngryMan(entity* player){
         cout<<"Angry man: \"YOU WILL REGRET THIS\"\n";
         cout<<"The man breaks free, drawing his sword.\n";
         //fight between angry man and player
+        Fight(player,angryMan);
+
         return;
         break;
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -319,3 +329,69 @@ int event::DisplayChoices(vector<string> choices){
     }
     return userInput;
 }
+
+void event::Fight(entity* player, entity* enemy){
+        srand(time(0));
+        int coinFlip = rand() % 2;
+        bool attackTurn = false;
+        bool didEscape = false;
+        vector<string> choices{"1). Attack\n","2). Attempt Escape\n"};
+        int userChoice;
+        int escapeNum=0;
+        if(coinFlip == 0){
+            attackTurn = false;
+        }
+        if(coinFlip == 1){
+            attackTurn = true;
+        }
+        while(player->GetHealth() > 0 && enemy->GetHealth() > 0 && didEscape == false){
+            //fight
+            cout<<"\n\n";
+            cout<<"---------------------------------------------" << endl;
+            if(attackTurn == true){
+                cout<<"The enemy attacks!"<<endl;
+                player->SetHealth(player->GetHealth()-enemy->GetDamage());//take hp based on weapon strength
+                cout<<player->GetName()<<" has "<<player->GetHealth() <<" health left!"<<endl;
+            }
+            if(attackTurn == false){
+                userChoice = DisplayChoices(choices);
+                if(userChoice == 1){
+                    cout<<"\n\n";
+                    cout<<"---------------------------------------------" << endl;
+                    cout<<"You attack!"<<endl;
+                    enemy->SetHealth(enemy->GetHealth()-player->GetDamage());//take hp based on weapon strength
+                    cout<<enemy->GetName()<<" has "<<enemy->GetHealth() <<" health left!"<<endl;
+                }
+                if(userChoice == 2){
+                    cout<<"\n\n";
+                    escapeNum = rand() % 3;
+                    if(escapeNum <= 1){
+                        didEscape = true;
+                        cout <<"Got away safely!"<<endl;
+                        
+                    }
+                    else{
+                        didEscape = false;
+                        cout<<"You try to escape, but fail!"<<endl;
+                    }
+                }
+            }
+            
+            cout<<"---------------------------------------------" << endl;
+
+            if(player->GetHealth() < 0){
+                cout <<player->GetName() <<" was defeated..."<<endl;
+                player->SetHealth(0);
+            }
+            if(enemy->GetHealth() < 0){
+                cout <<enemy->GetName() <<" was defeated..."<<endl;
+                enemy->SetHealth(0);
+            }
+            attackTurn = !attackTurn;
+        }
+        
+    return;
+}
+
+
+

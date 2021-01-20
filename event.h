@@ -22,6 +22,8 @@ class event
     void BearAttack(entity* player);
     void AngryMan(entity* player);
     int DisplayChoices(vector<string> choices);
+    void Fight(entity* player, entity* enemy);
+
 
 
     private:

@@ -18,6 +18,7 @@ int main()
     char playerChar = 'O';
     entity* player = new entity;
     player->SetDisplayChar(playerChar);
+    player->SetName("Ryan");
     event* events = new event;
 
     //events->BearAttack(player);
