@@ -37,6 +37,9 @@ class spot{
     void RemoveEntity();//sets entity pointer to null
     void CallEvent();
     void SetEventID(int eventID);
+    int GetEventID();
+    void SetKeepSymbol(bool keepSymbol);
+    bool GetKeepSymbol();
     ~spot();
 
 
@@ -49,6 +52,7 @@ class spot{
     bool hasPlayer;
     entity* player;
     int eventID;
+    bool keepSymbol;
 };
 
 
