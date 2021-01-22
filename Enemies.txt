@@ -1,0 +1,30 @@
+1 Goblin
+1 Theif
+1 Wolf
+2 Bear
+2 Wolf Pack
+2 Hunter
+3 Alpha Wolf
+3 Master Theif
+3 Goblin Chief
+3 Bandit
+4 Bandit Thug
+4 Angry Ghost
+4 Beast Tamer
+5 Bandit Mage
+5 Rgue Sourcerer
+5 Master Archer
+5 Master Swordsman
+5 Master Spearman
+6 Bandit Captain
+6 Dragon
+6 Dragon Slayer
+7 Bandit General
+7 Dragon of Flame
+7 Dragon of Ice
+7 Dragon of Water
+7 Dragon of Darkness
+7 Feral 
+8 Bandit Lord
+8 Elder Dragon
+8 Dragon Knight

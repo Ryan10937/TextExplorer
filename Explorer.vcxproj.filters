@@ -85,4 +85,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Enemies.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Enemies_Dmg_Hp.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

@@ -167,6 +167,10 @@
     <ClInclude Include="ItemTypes.h" />
     <ClInclude Include="spot.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Enemies.txt" />
+    <Text Include="Enemies_Dmg_Hp.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

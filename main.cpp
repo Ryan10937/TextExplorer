@@ -16,15 +16,21 @@ int main()
     * 
     * TESTING FOR EVENTS
     *    
-    char playerChar = 'O';
-    entity* player = new entity;
-    player->SetDisplayChar(playerChar);
-    player->SetName("Ryan");
+    */
+    /*
+    char TestPlayerChar = 'T';
+    entity* TestPlayer = new entity;
+    TestPlayer->SetDisplayChar(TestPlayerChar);
+    TestPlayer->SetName("TestPlayer");
     event* events = new event;
 
+    events->RandomEnemyEncounter(TestPlayer, 1);
+
     //events->BearAttack(player);
-    events->AngryMan(player);
+    //events->AngryMan(player):
     */
+
+    
 
     int initialChoice;
     initialChoice = MainMenu();

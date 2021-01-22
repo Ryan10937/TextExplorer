@@ -6,6 +6,8 @@
 #include "entity.h"
 #include<random>
 #include<ctime>
+#include <stdlib.h>
+#include <fstream>
 
 using namespace std;
 
@@ -21,8 +23,6 @@ void event::GreetingMessage(string greeting)
 {
     cout << greeting << endl;
 }
-
-
 
 void event::BearAttack(entity* player)
 {
@@ -75,6 +75,47 @@ void event::BearAttack(entity* player)
         delete(bear);
         return;
     }
+}
+
+bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
+{
+    //load a pool of enemy names based on stage number
+    vector<string> Enemypool;
+    string EnemyName;
+    ifstream Enemies("Enemies.txt");
+    if (Enemies.is_open())
+    {
+        while (getline(Enemies, EnemyName))
+        {
+            if ((std::stoi (EnemyName.substr(0,1), nullptr)) == Stagenumber)
+            {
+                Enemypool.push_back(EnemyName.substr((EnemyName.find(" ") + 1)));
+            }
+        }
+        Enemies.close();
+
+        //TODO Remove Debugging loop
+        for (auto x : Enemypool)
+        {
+            std::cout << x << '\n';
+        }
+    }
+
+    else cout << "Unable to open Enemies.txt";
+    ////////////////////////////////////////////
+
+    //randomly pick a enemy from pool
+    int randomnumber = rand() % (Enemypool.size() - 1);
+    EnemyName = Enemypool[randomnumber];
+    ////////////////////////////////////////////
+
+    //create a new entity with the randomly picked enemys name
+
+
+    //set the damage and health of the enemy based on the stagenumber (With 20% deviation for health and damage)
+    //call fight between player and new enemy
+    //after fight delete enemy
+    return true;
 }
 
 bool event::AngryMan(entity* player){
@@ -578,6 +619,7 @@ bool event::CallEvent(int eventID, entity* player){
     }
     return keepSymbol;
 }
+
 
 
 

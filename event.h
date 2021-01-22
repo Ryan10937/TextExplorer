@@ -23,6 +23,7 @@ class event
     bool EncounterBlueStone(entity* player);
     bool EncounterYellowStone(entity* player);
     bool MadMan(entity* player);
+    bool RandomEnemyEncounter(entity* player, int Stagenumber);
 
     //Event creation functions
     int DisplayChoices(vector<string> choices);
