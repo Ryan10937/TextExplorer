@@ -363,6 +363,7 @@ bool event::Fight(entity* player, entity* enemy){
             }
             attackTurn = !attackTurn;
         }
+        return false;
 }
 
 void event::BeginEvent(string beginMessage){
