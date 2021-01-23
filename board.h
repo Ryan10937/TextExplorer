@@ -37,6 +37,7 @@ class board{
     private:
     vector<vector<spot*>*>* grid;//map
     char fogOfWar;//fog of war character
+    char borderChar; //BorderChar
     bool printMapEachTurn;
 };
 #endif

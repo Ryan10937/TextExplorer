@@ -6,13 +6,14 @@
 #include"spot.h"
 #include"entity.h"
 #include"iAmHere.h"
+#include "Color.h"
 
 board::board(int boardHeight, int boardWidth){
     //create board
     grid = new vector<vector<spot*>* >;
     vector<spot*>* tempRow;
     spot* tempSpot;
-    char borderChar = 219;
+    borderChar = 219;
     fogOfWar = 177;
     printMapEachTurn = true;
     for(int i=0; i<boardHeight;i++){
@@ -57,40 +58,40 @@ void board::AddNewEntity(entity* player, int xPos, int yPos){
     //add entity to board at position specified
     ((grid->at(yPos))->at(xPos))->SetEntity(player);
 
-    //update position in player also
-    player->SetPosition(xPos,yPos);
+//update position in player also
+player->SetPosition(xPos, yPos);
 
 }
 
 
-void board::MoveEntity(string direction, entity* player){
-    pair<int,int> position = player->GetPosition();
-    char blockChar = 'a'+122;
+void board::MoveEntity(string direction, entity* player) {
+    pair<int, int> position = player->GetPosition();
+    char blockChar = 'a' + 122;
     char fogOfWarChar = fogOfWar;
     //add player to spot each time moved
         //to add player, call spot::addPlayer(entity* player)
             //in that function, call spot's event after player assignment
     //update grid
-    if(direction == "w" ){
-        if(((grid->at((position.second)-1))->at(position.first))->GetDisplayChar() == blockChar){
+    if (direction == "w") {
+        if (((grid->at((position.second) - 1))->at(position.first))->GetDisplayChar() == blockChar) {
             cout << "That space is blocked" << endl;
             return;
         }
         //direction == "up";
-        if(((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0){
+        if (((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0) {
             ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
         }
         ((grid->at(position.second))->at(position.first))->SetPlayer(NULL);//Remove player from spot
         position.second = position.second - 1;//update position based on direction selection
 
     }
-    if(direction == "a" ){
-        if(((grid->at(position.second))->at((position.first)-1))->GetDisplayChar() == blockChar){
+    if (direction == "a") {
+        if (((grid->at(position.second))->at((position.first) - 1))->GetDisplayChar() == blockChar) {
             cout << "That space is blocked" << endl;
             return;
         }
         //direction == "left";
-        if(((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0){
+        if (((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0) {
             ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
         }
         ((grid->at(position.second))->at(position.first))->SetPlayer(NULL);//Remove player from spot
@@ -98,13 +99,13 @@ void board::MoveEntity(string direction, entity* player){
         position.first = position.first - 1;//update position based on direction selection
 
     }
-    if(direction == "s" ){
-        if(((grid->at((position.second)+1))->at(position.first))->GetDisplayChar() == blockChar){
+    if (direction == "s") {
+        if (((grid->at((position.second) + 1))->at(position.first))->GetDisplayChar() == blockChar) {
             cout << "That space is blocked" << endl;
             return;
         }
         //direction == "down";
-        if(((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0){
+        if (((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0) {
             ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
         }
         ((grid->at(position.second))->at(position.first))->SetPlayer(NULL);//Remove player from spot
@@ -112,13 +113,13 @@ void board::MoveEntity(string direction, entity* player){
         position.second = position.second + 1;//update position based on direction selection
 
     }
-    if(direction == "d" ){
-        if(((grid->at(position.second))->at((position.first)+1))->GetDisplayChar() == blockChar){
+    if (direction == "d") {
+        if (((grid->at(position.second))->at((position.first) + 1))->GetDisplayChar() == blockChar) {
             cout << "That space is blocked" << endl;
             return;
         }
         //direction == "right";
-        if(((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0){
+        if (((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0) {
             ((grid->at(position.second))->at(position.first))->SetDisplayChar(fogOfWarChar);//Reset fog of war character
         }
         ((grid->at(position.second))->at(position.first))->SetPlayer(NULL);//Remove player from spot
@@ -128,34 +129,56 @@ void board::MoveEntity(string direction, entity* player){
 
     //now that position is updated, update player position, display character of spot moved to, and give that spot the player address
     player->SetPosition(position);
-    if(((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0){
+    if (((grid->at(position.second))->at(position.first))->GetKeepSymbol() == false || ((grid->at(position.second))->at(position.first))->GetEventID() == 0) {
         ((grid->at(position.second))->at(position.first))->SetDisplayChar(player->GetDisplayChar());
     }
-    ((grid->at(position.second))->at(position.first))->SetPlayer(player);   
+    ((grid->at(position.second))->at(position.first))->SetPlayer(player);
 
 }
 
-void board::SetEntity(int xPos, int yPos, entity* player){
-    AddNewEntity(player,xPos,yPos);
+void board::SetEntity(int xPos, int yPos, entity* player) {
+    AddNewEntity(player, xPos, yPos);
 }
-void board::SetDisplayChar(int xPos, int yPos, char displayChar){
+void board::SetDisplayChar(int xPos, int yPos, char displayChar) {
     ((grid->at(yPos))->at(xPos))->SetDisplayChar(displayChar);
 }
-void board::AddEventToSpot(int xPos, int yPos, char displayChar, int eventNum){
-    SetDisplayChar(xPos,yPos,displayChar);
-    SetSpotEventID(xPos,yPos,eventNum);
+void board::AddEventToSpot(int xPos, int yPos, char displayChar, int eventNum) {
+    SetDisplayChar(xPos, yPos, displayChar);
+    SetSpotEventID(xPos, yPos, eventNum);
 }
 
 
-void board::PrintGrid(){
+void board::PrintGrid() {
 
-    cout <<"\n\n\n\n\n\n\n";
+    cout << "\n\n\n\n\n\n\n";
     //print grid to console
-    for(int i=0; i<grid->size();i++){//number of rows (y). This is not backwards
-        for(int j=0; j<(grid->at(i))->size();j++){//number of columns(x)
-            
+    for (int i = 0; i < grid->size(); i++) {//number of rows (y). This is not backwards
+        for (int j = 0; j < (grid->at(i))->size(); j++) {//number of columns(x)
+
             //cout <<((grid->at(i))->at(j))->GetDisplayChar()<<" ";
-            cout <<((grid->at(i))->at(j))->GetDisplayChar();
+            if (((grid->at(i))->at(j))->GetDisplayChar() == 'O')
+            {
+                SetColor(9);
+                cout << ((grid->at(i))->at(j))->GetDisplayChar();
+                ResetColor();
+            }
+            else if (((grid->at(i))->at(j))->GetDisplayChar() != fogOfWar && ((grid->at(i))->at(j))->GetDisplayChar() != 'M' && ((grid->at(i))->at(j))->GetDisplayChar() != borderChar)
+            {
+                SetColor(10);
+                cout << ((grid->at(i))->at(j))->GetDisplayChar();
+                ResetColor();
+            }
+            else if (((grid->at(i))->at(j))->GetDisplayChar() == 'M')
+            {
+                SetColor(12);
+                cout << ((grid->at(i))->at(j))->GetDisplayChar();
+                ResetColor();
+            }
+            else
+            {
+                cout << ((grid->at(i))->at(j))->GetDisplayChar();
+            }
+            
             //position (x,y) is (grid->at(y))->at(x)
         }
         cout <<endl;
