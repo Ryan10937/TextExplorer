@@ -69,8 +69,10 @@ int main()
     int randY;
     int randMonsterLoopBreaker = 0;
     for(int i=0;i<numRandomMonsters;i++){
-        randX = (rand()% boardWidth-2) +2;
-        randY = (rand()% boardHeight-2) +2;
+        randX = (rand()% (boardWidth-3)) +1; //vary (0-47) + 1
+        randY = (rand()% (boardHeight-3)) +1; //vary (0-16) + 1 
+        cout<<"randX is: "<<randX<<endl;
+        cout<<"randY is: "<<randY<<endl;
         if((((gameMap->GetGrid())->at(randY))->at(randX))->GetEventID() == 0){//if no event at spot, put monster there
             gameMap->AddEventToSpot(randX,randY,'M',7);//random monster
         }
