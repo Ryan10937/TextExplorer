@@ -113,6 +113,7 @@ int main()
     delete(player);
     delete(gameMap);
 
+
     cout <<"Thank you for playing!"<<endl;
 
     return 0;
