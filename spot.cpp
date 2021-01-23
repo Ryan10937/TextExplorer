@@ -1,5 +1,6 @@
 #include<vector>
 #include<string>
+#include<iostream>
 #include"spot.h"
 #include"entity.h"
 #include"iAmHere.h"
@@ -12,7 +13,7 @@ spot::spot(char fogOfWarChar){
     position = make_pair(-1,-1);
     type = "noType";
     hasPlayer = false;
-    entity* player = nullptr;
+    entity* player = NULL;
     hasEvent = false;
     eventCollection = new event;
     keepSymbol = true;
@@ -122,5 +123,8 @@ bool spot::GetKeepSymbol(){
 
 
 spot::~spot(){
-    delete(player);
+    if(player == NULL){
+        delete(player);
+    }
+    delete(eventCollection);
 }
