@@ -69,8 +69,8 @@ int main()
     int randY;
     int randMonsterLoopBreaker = 0;
     for(int i=0;i<numRandomMonsters;i++){
-        randX = (rand()% boardWidth-2) +1;
-        randY = (rand()% boardHeight-2) +1;
+        randX = (rand()% boardWidth-2) +2;
+        randY = (rand()% boardHeight-2) +2;
         if((((gameMap->GetGrid())->at(randY))->at(randX))->GetEventID() == 0){//if no event at spot, put monster there
             gameMap->AddEventToSpot(randX,randY,'M',7);//random monster
         }
