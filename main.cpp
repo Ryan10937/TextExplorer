@@ -24,11 +24,11 @@ int main()
     TestPlayer->SetName("TestPlayer");
     event* events = new event;
 
-    events->RandomEnemyEncounter(TestPlayer, 1);
-
+    //events->RandomEnemyEncounter(TestPlayer, 1);
     //events->BearAttack(player);
     //events->AngryMan(player):
     */
+
 
     
 

@@ -28,3 +28,363 @@
 8 Bandit Lord
 8 Elder Dragon
 8 Dragon Knight
+9 Goblin
+9 Theif
+9 Wolf
+9 Bear
+9 Wolf Pack
+9 Hunter
+9 Alpha Wolf
+9 Master Theif
+9 Goblin Chief
+9 Bandit
+9 Bandit Thug
+9 Angry Ghost
+9 Beast Tamer
+9 Bandit Mage
+9 Rgue Sourcerer
+9 Master Archer
+9 Master Swordsman
+9 Master Spearman
+9 Bandit Captain
+9 Dragon
+9 Dragon Slayer
+9 Bandit General
+9 Dragon of Flame
+9 Dragon of Ice
+9 Dragon of Water
+9 Dragon of Darkness
+9 Feral Werewolf
+9 Bandit Lord
+9 Elder Dragon
+9 Dragon Knight
+10 Goblin
+10 Theif
+10 Wolf
+10 Bear
+10 Wolf Pack
+10 Hunter
+10 Alpha Wolf
+10 Master Theif
+10 Goblin Chief
+10 Bandit
+10 Bandit Thug
+10 Angry Ghost
+10 Beast Tamer
+10 Bandit Mage
+10 Rgue Sourcerer
+10 Master Archer
+10 Master Swordsman
+10 Master Spearman
+10 Bandit Captain
+10 Dragon
+10 Dragon Slayer
+10 Bandit General
+10 Dragon of Flame
+10 Dragon of Ice
+10 Dragon of Water
+10 Dragon of Darkness
+10 Feral Werewolf
+10 Bandit Lord
+10 Elder Dragon
+10 Dragon Knight
+11 Goblin
+11 Theif
+11 Wolf
+11 Bear
+11 Wolf Pack
+11 Hunter
+11 Alpha Wolf
+11 Master Theif
+11 Goblin Chief
+11 Bandit
+11 Bandit Thug
+11 Angry Ghost
+11 Beast Tamer
+11 Bandit Mage
+11 Rgue Sourcerer
+11 Master Archer
+11 Master Swordsman
+11 Master Spearman
+11 Bandit Captain
+11 Dragon
+11 Dragon Slayer
+11 Bandit General
+11 Dragon of Flame
+11 Dragon of Ice
+11 Dragon of Water
+11 Dragon of Darkness
+11 Feral Werewolf
+11 Bandit Lord
+11 Elder Dragon
+11 Dragon Knight
+12 Goblin
+12 Theif
+12 Wolf
+12 Bear
+12 Wolf Pack
+12 Hunter
+12 Alpha Wolf
+12 Master Theif
+12 Goblin Chief
+12 Bandit
+12 Bandit Thug
+12 Angry Ghost
+12 Beast Tamer
+12 Bandit Mage
+12 Rgue Sourcerer
+12 Master Archer
+12 Master Swordsman
+12 Master Spearman
+12 Bandit Captain
+12 Dragon
+12 Dragon Slayer
+12 Bandit General
+12 Dragon of Flame
+12 Dragon of Ice
+12 Dragon of Water
+12 Dragon of Darkness
+12 Feral Werewolf
+12 Bandit Lord
+12 Elder Dragon
+12 Dragon Knight
+13 Goblin
+13 Theif
+13 Wolf
+13 Bear
+13 Wolf Pack
+13 Hunter
+13 Alpha Wolf
+13 Master Theif
+13 Goblin Chief
+13 Bandit
+13 Bandit Thug
+13 Angry Ghost
+13 Beast Tamer
+13 Bandit Mage
+13 Rgue Sourcerer
+13 Master Archer
+13 Master Swordsman
+13 Master Spearman
+13 Bandit Captain
+13 Dragon
+13 Dragon Slayer
+13 Bandit General
+13 Dragon of Flame
+13 Dragon of Ice
+13 Dragon of Water
+13 Dragon of Darkness
+13 Feral Werewolf
+13 Bandit Lord
+13 Elder Dragon
+13 Dragon Knight
+14 Goblin
+14 Theif
+14 Wolf
+14 Bear
+14 Wolf Pack
+14 Hunter
+14 Alpha Wolf
+14 Master Theif
+14 Goblin Chief
+14 Bandit
+14 Bandit Thug
+14 Angry Ghost
+14 Beast Tamer
+14 Bandit Mage
+14 Rgue Sourcerer
+14 Master Archer
+14 Master Swordsman
+14 Master Spearman
+14 Bandit Captain
+14 Dragon
+14 Dragon Slayer
+14 Bandit General
+14 Dragon of Flame
+14 Dragon of Ice
+14 Dragon of Water
+14 Dragon of Darkness
+14 Feral Werewolf
+14 Bandit Lord
+14 Elder Dragon
+14 Dragon Knight
+15 Goblin
+15 Theif
+15 Wolf
+15 Bear
+15 Wolf Pack
+15 Hunter
+15 Alpha Wolf
+15 Master Theif
+15 Goblin Chief
+15 Bandit
+15 Bandit Thug
+15 Angry Ghost
+15 Beast Tamer
+15 Bandit Mage
+15 Rgue Sourcerer
+15 Master Archer
+15 Master Swordsman
+15 Master Spearman
+15 Bandit Captain
+15 Dragon
+15 Dragon Slayer
+15 Bandit General
+15 Dragon of Flame
+15 Dragon of Ice
+15 Dragon of Water
+15 Dragon of Darkness
+15 Feral Werewolf
+15 Bandit Lord
+15 Elder Dragon
+15 Dragon Knight
+16 Goblin
+16 Theif
+16 Wolf
+16 Bear
+16 Wolf Pack
+16 Hunter
+16 Alpha Wolf
+16 Master Theif
+16 Goblin Chief
+16 Bandit
+16 Bandit Thug
+16 Angry Ghost
+16 Beast Tamer
+16 Bandit Mage
+16 Rgue Sourcerer
+16 Master Archer
+16 Master Swordsman
+16 Master Spearman
+16 Bandit Captain
+16 Dragon
+16 Dragon Slayer
+16 Bandit General
+16 Dragon of Flame
+16 Dragon of Ice
+16 Dragon of Water
+16 Dragon of Darkness
+16 Feral Werewolf
+16 Bandit Lord
+16 Elder Dragon
+16 Dragon Knight
+17 Goblin
+17 Theif
+17 Wolf
+17 Bear
+17 Wolf Pack
+17 Hunter
+17 Alpha Wolf
+17 Master Theif
+17 Goblin Chief
+17 Bandit
+17 Bandit Thug
+17 Angry Ghost
+17 Beast Tamer
+17 Bandit Mage
+17 Rgue Sourcerer
+17 Master Archer
+17 Master Swordsman
+17 Master Spearman
+17 Bandit Captain
+17 Dragon
+17 Dragon Slayer
+17 Bandit General
+17 Dragon of Flame
+17 Dragon of Ice
+17 Dragon of Water
+17 Dragon of Darkness
+17 Feral Werewolf
+17 Bandit Lord
+17 Elder Dragon
+17 Dragon Knight
+18 Goblin
+18 Theif
+18 Wolf
+18 Bear
+18 Wolf Pack
+18 Hunter
+18 Alpha Wolf
+18 Master Theif
+18 Goblin Chief
+18 Bandit
+18 Bandit Thug
+18 Angry Ghost
+18 Beast Tamer
+18 Bandit Mage
+18 Rgue Sourcerer
+18 Master Archer
+18 Master Swordsman
+18 Master Spearman
+18 Bandit Captain
+18 Dragon
+18 Dragon Slayer
+18 Bandit General
+18 Dragon of Flame
+18 Dragon of Ice
+18 Dragon of Water
+18 Dragon of Darkness
+18 Feral Werewolf
+18 Bandit Lord
+18 Elder Dragon
+18 Dragon Knight
+19 Goblin
+19 Theif
+19 Wolf
+19 Bear
+19 Wolf Pack
+19 Hunter
+19 Alpha Wolf
+19 Master Theif
+19 Goblin Chief
+19 Bandit
+19 Bandit Thug
+19 Angry Ghost
+19 Beast Tamer
+19 Bandit Mage
+19 Rgue Sourcerer
+19 Master Archer
+19 Master Swordsman
+19 Master Spearman
+19 Bandit Captain
+19 Dragon
+19 Dragon Slayer
+19 Bandit General
+19 Dragon of Flame
+19 Dragon of Ice
+19 Dragon of Water
+19 Dragon of Darkness
+19 Feral Werewolf
+19 Bandit Lord
+19 Elder Dragon
+19 Dragon Knight
+20 Goblin
+20 Theif
+20 Wolf
+20 Bear
+20 Wolf Pack
+20 Hunter
+20 Alpha Wolf
+20 Master Theif
+20 Goblin Chief
+20 Bandit
+20 Bandit Thug
+20 Angry Ghost
+20 Beast Tamer
+20 Bandit Mage
+20 Rgue Sourcerer
+20 Master Archer
+20 Master Swordsman
+20 Master Spearman
+20 Bandit Captain
+20 Dragon
+20 Dragon Slayer
+20 Bandit General
+20 Dragon of Flame
+20 Dragon of Ice
+20 Dragon of Water
+20 Dragon of Darkness
+20 Feral Werewolf
+20 Bandit Lord
+20 Elder Dragon
+20 Dragon Knight

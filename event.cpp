@@ -93,28 +93,50 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
             }
         }
         Enemies.close();
-
-        //TODO Remove Debugging loop
-        for (auto x : Enemypool)
-        {
-            std::cout << x << '\n';
-        }
     }
 
     else cout << "Unable to open Enemies.txt";
     ////////////////////////////////////////////
 
     //randomly pick a enemy from pool
-    int randomnumber = rand() % (Enemypool.size() - 1);
+    int randomnumber = rand() % (Enemypool.size());
     EnemyName = Enemypool[randomnumber];
+    
     ////////////////////////////////////////////
 
     //create a new entity with the randomly picked enemys name
-
+    entity* RandomEnemy = new entity;
+    RandomEnemy->SetName(EnemyName);
 
     //set the damage and health of the enemy based on the stagenumber (With 20% deviation for health and damage)
+    std::string EnemDmgHp;
+    float RandomEnemyDmg = 0;
+    float RandomEnemyHP = 0;
+    ifstream Enemies_Dmg_Hp("Enemies_Dmg_Hp.txt");
+    if (Enemies_Dmg_Hp.is_open())
+    {
+        while (getline(Enemies_Dmg_Hp, EnemDmgHp))
+        {
+            if ((std::stoi(EnemDmgHp.substr(0, 1), nullptr)) == Stagenumber)
+            {
+                RandomEnemyDmg = std::stoi(EnemDmgHp.substr(EnemDmgHp.find(' ') + 1, EnemDmgHp.rfind(' ') - 1));
+                RandomEnemyHP = std::stoi(EnemDmgHp.substr(EnemDmgHp.rfind(' ') + 1));
+            }
+        }
+        Enemies_Dmg_Hp.close();
+    }
+
+    else cout << "Unable to open Enemies_Dmg_Hp.txt";
+
+    RandomEnemy->SetDamage(RandomEnemyDmg);
+    RandomEnemy->SetHealth(RandomEnemyHP);
+
     //call fight between player and new enemy
+    Fight(player, RandomEnemy);
+
     //after fight delete enemy
+    delete(RandomEnemy);
+
     return true;
 }
 
