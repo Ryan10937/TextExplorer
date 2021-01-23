@@ -27,7 +27,7 @@ class event
 
     //Event creation functions
     int DisplayChoices(vector<string> choices);
-    void Fight(entity* player, entity* enemy);
+    bool Fight(entity* player, entity* enemy);
 
     //Call Event
     bool CallEvent(int eventID,entity* player);

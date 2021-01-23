@@ -87,7 +87,7 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     {
         while (getline(Enemies, EnemyName))
         {
-            if ((std::stoi (EnemyName.substr(0,1), nullptr)) == Stagenumber)
+            if ((std::stoi(EnemyName.substr(0, 1), nullptr)) == Stagenumber)
             {
                 Enemypool.push_back(EnemyName.substr((EnemyName.find(" ") + 1)));
             }
@@ -101,7 +101,7 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     //randomly pick a enemy from pool
     int randomnumber = rand() % (Enemypool.size());
     EnemyName = Enemypool[randomnumber];
-    
+
     ////////////////////////////////////////////
 
     //create a new entity with the randomly picked enemys name
@@ -132,12 +132,16 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     RandomEnemy->SetHealth(RandomEnemyHP);
 
     //call fight between player and new enemy
-    Fight(player, RandomEnemy);
-
-    //after fight delete enemy
-    delete(RandomEnemy);
-
-    return true;
+    if (Fight(player, RandomEnemy))
+    {
+        delete(RandomEnemy);
+        return true;
+    }
+    else
+    {
+        delete(RandomEnemy);
+        return false;
+    }
 }
 
 bool event::AngryMan(entity* player){
@@ -331,7 +335,7 @@ int event::DisplayChoices(vector<string> choices){
     return userInput;
 }
 
-void event::Fight(entity* player, entity* enemy){
+bool event::Fight(entity* player, entity* enemy){
         srand(time(0));
         int coinFlip = rand() % 2;
         bool attackTurn = false;
@@ -385,15 +389,15 @@ void event::Fight(entity* player, entity* enemy){
             if(player->GetHealth() < 0){
                 cout <<player->GetName() <<" was defeated..."<<endl;
                 player->SetHealth(0);
+                return false;
             }
             if(enemy->GetHealth() < 0){
                 cout <<enemy->GetName() <<" was defeated..."<<endl;
                 enemy->SetHealth(0);
+                return true;
             }
             attackTurn = !attackTurn;
         }
-        
-    return;
 }
 
 void event::BeginEvent(string beginMessage){
