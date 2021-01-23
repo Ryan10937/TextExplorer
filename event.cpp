@@ -91,17 +91,16 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     ResetColor();
     std::cout << " to start the fight!";
 
-    cin.get();
     //call fight between player and new enemy
     if (Fight(player, RandomEnemy))
     {
         delete(RandomEnemy);
-        return true;
+        return false;
     }
     else
     {
         delete(RandomEnemy);
-        return false;
+        return true;
     }
 }
 
