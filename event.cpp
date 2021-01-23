@@ -8,6 +8,7 @@
 #include<ctime>
 #include <stdlib.h>
 #include <fstream>
+#include "Color.h"
 
 using namespace std;
 
@@ -24,59 +25,6 @@ void event::GreetingMessage(string greeting)
     cout << greeting << endl;
 }
 
-void event::BearAttack(entity* player)
-{
-    //TODO ADD COLOR
-    bool isEventOver = false;
-    int playersAction;
-
-    entity* bear = new entity;
-    bear->SetHealth(10);
-    bear->SetName("Bear");
-
-    //Clear some lines for the event
-    for (size_t i = 0; i < 50; i++)
-    {
-        std::cout << std::endl;
-    }
-
-    std::cout << "You have encountered a giant bear!" << std::endl;
-    std::cout << "The bear sees you and is preparing to charge you" << std::endl;
-    std::cout << "What will you do!?" << std::endl;
-
-    std::cout << "  1. Attack!" << std::endl; //Runs the Attack function
-    std::cout << "  2. Run!" << std::endl; //Return Player to previous spot
-    while (!(std::cin >> playersAction) || playersAction > 2 || playersAction < 1)
-    {
-        //Error Message
-        std::cout << "Please enter the number of the action you want to take." << std::endl;
-
-        // Clear input stream
-        std::cin.clear();
-
-        // Discard previous input
-        std::cin.ignore(123, '\n');
-    }
-    // Clear input stream
-    std::cin.clear();
-
-    // Discard previous input
-    std::cin.ignore(123, '\n');
-    if (playersAction == 1)
-    {
-        Fight(player, bear);
-    }
-    else
-    {
-        std::cout << "You run as fast as you can back to where you came" << std::endl;
-        //Return Player to previous spot
-        isEventOver = true;
-
-        delete(bear);
-        return;
-    }
-}
-
 bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
 {
     //load a pool of enemy names based on stage number
@@ -87,7 +35,7 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     {
         while (getline(Enemies, EnemyName))
         {
-            if ((std::stoi(EnemyName.substr(0, 1), nullptr)) == Stagenumber)
+            if ((std::stoi(EnemyName.substr(0, EnemyName.find(' ')), nullptr)) == Stagenumber)
             {
                 Enemypool.push_back(EnemyName.substr((EnemyName.find(" ") + 1)));
             }
@@ -101,6 +49,7 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     //randomly pick a enemy from pool
     int randomnumber = rand() % (Enemypool.size());
     EnemyName = Enemypool[randomnumber];
+
 
     ////////////////////////////////////////////
 
@@ -117,7 +66,7 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     {
         while (getline(Enemies_Dmg_Hp, EnemDmgHp))
         {
-            if ((std::stoi(EnemDmgHp.substr(0, 1), nullptr)) == Stagenumber)
+            if ((std::stoi(EnemDmgHp.substr(0, EnemDmgHp.find(' ')), nullptr)) == Stagenumber)
             {
                 RandomEnemyDmg = std::stoi(EnemDmgHp.substr(EnemDmgHp.find(' ') + 1, EnemDmgHp.rfind(' ') - 1));
                 RandomEnemyHP = std::stoi(EnemDmgHp.substr(EnemDmgHp.rfind(' ') + 1));
@@ -131,6 +80,18 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     RandomEnemy->SetDamage(RandomEnemyDmg);
     RandomEnemy->SetHealth(RandomEnemyHP);
 
+
+    std::cout << "You have encountered a ";
+    SetColor(12);
+    std::cout << RandomEnemy->GetName() << std::endl;
+    ResetColor();
+    std::cout << "Press ";
+    SetColor(14);
+    std::cout << "ENTER";
+    ResetColor();
+    std::cout << " to start the fight!";
+
+    cin.get();
     //call fight between player and new enemy
     if (Fight(player, RandomEnemy))
     {
@@ -354,7 +315,9 @@ bool event::Fight(entity* player, entity* enemy){
             cout<<"\n\n";
             cout<<"---------------------------------------------" << endl;
             if(attackTurn == true){
+                SetColor(12);
                 cout<<"The enemy attacks!"<<endl;
+                ResetColor();
                 player->SetHealth(player->GetHealth()-enemy->GetDamage());//take hp based on weapon strength
                 cout<<player->GetName()<<" has "<<player->GetHealth() <<" health left!"<<endl;
             }
@@ -363,7 +326,9 @@ bool event::Fight(entity* player, entity* enemy){
                 if(userChoice == 1){
                     cout<<"\n\n";
                     cout<<"---------------------------------------------" << endl;
+                    SetColor(14);
                     cout<<"You attack!"<<endl;
+                    ResetColor();
                     enemy->SetHealth(enemy->GetHealth()-player->GetDamage());//take hp based on weapon strength
                     cout<<enemy->GetName()<<" has "<<enemy->GetHealth() <<" health left!"<<endl;
                 }
@@ -374,7 +339,7 @@ bool event::Fight(entity* player, entity* enemy){
                         didEscape = true;
                         cout<<"---------------------------------------------" << endl;
                         cout <<"Got away safely!"<<endl;
-                        
+                        return false;
                     }
                     else{
                         didEscape = false;
@@ -616,9 +581,9 @@ bool event::CallEvent(int eventID, entity* player){
         case(0):
         return true;
         break;
+
         case(1):
-        BearAttack(player);
-        return false;
+        return true;
         break;
         
         case(2):
