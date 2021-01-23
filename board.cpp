@@ -141,6 +141,10 @@ void board::SetEntity(int xPos, int yPos, entity* player){
 void board::SetDisplayChar(int xPos, int yPos, char displayChar){
     ((grid->at(yPos))->at(xPos))->SetDisplayChar(displayChar);
 }
+void board::AddEventToSpot(int xPos, int yPos, char displayChar, int eventNum){
+    SetDisplayChar(xPos,yPos,displayChar);
+    SetSpotEventID(xPos,yPos,eventNum);
+}
 
 
 void board::PrintGrid(){

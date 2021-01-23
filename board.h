@@ -21,6 +21,7 @@ class board{
     void MoveEntity(string direction, entity* player);//move player in direction
     void SetEntity(int xPos, int yPos, entity* player);
     void SetDisplayChar(int xPos, int yPos, char displayChar);//sets display character of the spot at (xPos,yPos)
+    void AddEventToSpot(int xPos, int yPos, char displayChar, int eventNum);
     void PrintGrid(); //Prints map
     bool PromptPlayer(string prompt, entity* player);//prompts the user for input, calls appropriate function after
     void SetSpotEventID(int xPos, int yPos, int eventID);

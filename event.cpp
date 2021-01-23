@@ -637,6 +637,9 @@ bool event::CallEvent(int eventID, entity* player){
         keepSymbol = MadMan(player);
         break;
 
+        case(7):
+        keepSymbol = RandomEnemyEncounter(player,1);
+        break;
         
     }
     return keepSymbol;

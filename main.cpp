@@ -1,6 +1,8 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<random>
+#include<ctime>
 
 #include"iAmHere.h"
 #include"entity.h"
@@ -38,10 +40,13 @@ int main()
         cout <<"Game Exiting..."<<endl;
         return 0;
     }
-
+////////////////////////////////////customizable variables////////////////////////////////////////////////////////////////////////////
     int boardHeight = 20;
     int boardWidth = 50;
     char playerChar = 'O';
+    int numRandomMonsters = 20;
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
     //event* eventCollection = new event;
     entity* player = new entity;
@@ -52,21 +57,32 @@ int main()
 
 
     //Add Events to map
-    gameMap->SetSpotEventID(10,10,1);//add BearAttack()
-    gameMap->SetSpotDisplayCharacter(10,10,'B');
-    gameMap->SetSpotEventID(23,15,2);//add AngryMan
-    gameMap->SetSpotDisplayCharacter(23,15,'A');    
-    gameMap->SetSpotEventID(25,16,3);//add EncounterRedStone()
-    gameMap->SetSpotDisplayCharacter(25,16,'@');    
-    gameMap->SetSpotEventID(26,12,4);//add EncounterBlueStone()
-    gameMap->SetSpotDisplayCharacter(26,12,'@');  
-    gameMap->SetSpotEventID(33,15,5);//add EncounterYellowStone()
-    gameMap->SetSpotDisplayCharacter(33,15,'@');   
-    gameMap->SetSpotEventID(30,15,6);//add MadMan()
-    gameMap->SetSpotDisplayCharacter(30,15,'H'); 
-
-
-
+    gameMap->AddEventToSpot(10,10,'B',1);//bear attack
+    gameMap->AddEventToSpot(23,15,'A',2);//angry man
+    gameMap->AddEventToSpot(25,16,'@',3);//red stone
+    gameMap->AddEventToSpot(26,12,'@',4);//blue stone
+    gameMap->AddEventToSpot(33,15,'@',5);//yellow stone
+    gameMap->AddEventToSpot(30,15,'H',6);//madman
+    
+    srand(time(0));
+    int randX;
+    int randY;
+    int randMonsterLoopBreaker = 0;
+    for(int i=0;i<numRandomMonsters;i++){
+        randX = (rand()% boardWidth-2) +1;
+        randY = (rand()% boardHeight-2) +1;
+        if((((gameMap->GetGrid())->at(randY))->at(randX))->GetEventID() == 0){//if no event at spot, put monster there
+            gameMap->AddEventToSpot(randX,randY,'M',7);//random monster
+        }
+        else{//if there was an event there, reduce i and try again
+            i = i-1;
+            randMonsterLoopBreaker++;
+        }
+        if(randMonsterLoopBreaker> 1000){
+            cout<<"randMonsterLoopBreaker triggered. Breaking"<<endl;
+            break;
+        }
+    }
 
     gameMap->PrintGrid();
 
@@ -85,6 +101,10 @@ int main()
         loopBreaker++;
         if(loopBreaker > 2000){
             cout <<"Loop break triggered" << endl;
+            break;
+        }
+        if(player->GetHealth() <= 0){
+            cout <<"Death is a risk taken by all explorers. You have met that risk...\n";
             break;
         }
     }
