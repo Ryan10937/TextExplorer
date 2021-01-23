@@ -57,7 +57,6 @@ int main()
 
 
     //Add Events to map
-    gameMap->AddEventToSpot(10,10,'B',1);//bear attack
     gameMap->AddEventToSpot(23,15,'A',2);//angry man
     gameMap->AddEventToSpot(25,16,'@',3);//red stone
     gameMap->AddEventToSpot(26,12,'@',4);//blue stone
