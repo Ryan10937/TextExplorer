@@ -126,3 +126,10 @@ float entity::GetDamage(){
 void entity::SetDamage(float damage){
     this->damage = damage;
 }
+
+float entity::GetMaxHealth(){
+    return maxHealth;
+}
+void entity::SetMaxHealth(float maxHealth){
+    this->maxHealth = maxHealth;
+}

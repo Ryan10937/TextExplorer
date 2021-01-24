@@ -95,14 +95,34 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     if (Fight(player, RandomEnemy))
     {
         delete(RandomEnemy);
-        return false;
+        return true;
     }
     else
     {
         delete(RandomEnemy);
-        return true;
+        return false;
     }
 }
+
+bool event::DoctorVisit(entity* player){
+    BeginEvent("Hello Traveler. Let me treat your wounds");
+
+    vector<string> choices{"1). Let the doctor treat your wounds\n", "2). Leave\n"};
+    int userChoice = DisplayChoices(choices);
+    
+    if(userChoice == 1){
+        cout <<player->GetName()<<": \"Heal what you can\"\n\n";
+        player->SetHealth(player->GetMaxHealth());
+        cout <<"Booop booop beep boop booooopp\n\n\n";
+    }
+    if(userChoice == 2){
+        cout <<player->GetName()<<": \"On second thought, I will leave\"\n";
+    }
+
+    return true;
+}
+
+
 
 bool event::AngryMan(entity* player){
 
@@ -309,7 +329,7 @@ bool event::Fight(entity* player, entity* enemy){
         if(coinFlip == 1){
             attackTurn = true;
         }
-        while(player->GetHealth() > 0 && enemy->GetHealth() > 0 && didEscape == false){
+        while(player->GetHealth() >= 0 && enemy->GetHealth() >= 0 && didEscape == false){
             //fight
             cout<<"\n\n";
             cout<<"---------------------------------------------" << endl;
@@ -350,15 +370,15 @@ bool event::Fight(entity* player, entity* enemy){
             
             cout<<"---------------------------------------------" << endl;
 
-            if(player->GetHealth() < 0){
+            if(player->GetHealth() <= 0){
                 cout <<player->GetName() <<" was defeated..."<<endl;
                 player->SetHealth(0);
-                return false;
+                return true;
             }
-            if(enemy->GetHealth() < 0){
+            if(enemy->GetHealth() <= 0){
                 cout <<enemy->GetName() <<" was defeated..."<<endl;
                 enemy->SetHealth(0);
-                return true;
+                return false;
             }
             attackTurn = !attackTurn;
         }
@@ -467,6 +487,8 @@ bool event::MadMan(entity* player){
     int userChoice2=0;
     int numberOfStones = hasRedStone + hasBlueStone + hasYellowStone;
 
+    string trashVar;
+
 
     BeginEvent("You see the top of an old hut in the distance. Your curiosity throws you to its front porch.");
 
@@ -474,12 +496,17 @@ bool event::MadMan(entity* player){
     vector<string> choices{"1). Knock\n","2). Walk away from the house\n"};
     userChoice = DisplayChoices(choices);
     if(userChoice == 2){
-        cout <<"You walk away from the house, hearing rambling whispers from within\n";
+        cout <<"You walk away from the house, hearing rambling whispers from within\n\n";
+        cout<<"Enter any key to continue"<<endl;
+        cin>>trashVar;
         return true;
     }
     else{
         cout <<"You walk to the door and knock 3 times.\n";
-        cout <<"An old man with countable hairs on his head opens the door\n";
+        cout <<"An old man with countable hairs on his head opens the door\n\n";
+
+        cout<<"Enter any key to continue"<<endl;
+        cin>>trashVar;
     }
 
     switch(numberOfStones){
@@ -542,6 +569,8 @@ bool event::MadMan(entity* player){
         userChoice2 = DisplayChoices(choices);
         if(userChoice2 == 2){
             cout <<"\n\nYou run from the house.\n As you run, you can hear the Old Man descending into madness\n\n";
+            cout<<"Enter any key to continue"<<endl;
+            cin>>trashVar;
             return true;
         }
         player->RemoveInventoryItem(1110);//take red stone
@@ -552,10 +581,12 @@ bool event::MadMan(entity* player){
         cout <<"begin flowing from the stones to various parts of the Old Man's body.\n";
         cout <<"Curled up on the floor, the Old Man begins to speak.\n";
         cout <<"\nOld Man: \"Thank you traveller. \"\n";
-        choices = {"1). Ask the man what happened\n","2). Walk away from the house\n"};
+        choices = {"1). Ask the man what happened\n","2). Walk away from the house\n\n"};
         userChoice2 = DisplayChoices(choices);
         if(userChoice2 == 2){
-            cout <<"You leave the house, never knowing what happened to the Old Man.\n";
+            cout <<"You leave the house, never knowing what happened to the Old Man.\n\n";
+            cout<<"Enter any key to continue"<<endl;
+            cin>>trashVar;
             return true;
         }
         cout <<"Old Man: \"Many years ago, I was married to an outstanding young woman. She was perfect.\"\n";
@@ -568,9 +599,15 @@ bool event::MadMan(entity* player){
         cout <<"Old Man: \"The mind is not built for such a task. Especially an old mind like mine.\"\n";
         cout <<"Old Man: \"Thank you traveller, I will always be grateful.\"\n";
         cout <<"You leave the Old Man's house. He is given back the mind he once lost.";
+        cout<<"Enter any key to continue"<<endl;
+        cin>>trashVar;
         return false;
         break;
     };
+
+    cout<<"Enter any key to continue"<<endl;
+    cin>>trashVar;
+
     return true;
 }
 
@@ -608,6 +645,10 @@ bool event::CallEvent(int eventID, entity* player){
 
         case(7):
         keepSymbol = RandomEnemyEncounter(player,1);
+        break;
+
+        case(8):
+        keepSymbol = DoctorVisit(player);
         break;
         
     }
