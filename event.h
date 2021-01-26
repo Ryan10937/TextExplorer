@@ -24,6 +24,7 @@ class event
     bool EncounterYellowStone(entity* player);
     bool MadMan(entity* player);
     bool RandomEnemyEncounter(entity* player, int Stagenumber);
+    bool DoctorVisit(entity* player);
 
     //Event creation functions
     int DisplayChoices(vector<string> choices);

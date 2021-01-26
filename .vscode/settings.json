@@ -4,6 +4,8 @@
         "vector": "cpp",
         "iostream": "cpp",
         "string": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "*.tcc": "cpp",
+        "type_traits": "cpp"
     }
 }

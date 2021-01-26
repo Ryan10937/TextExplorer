@@ -104,6 +104,10 @@ void spot::CallEvent(){
 
     keepSymbol = eventCollection->CallEvent(eventID, player);
     
+    if(keepSymbol == false){
+        eventID = 0;
+    }
+    
 
 }
 void spot::SetEventID(int eventID){

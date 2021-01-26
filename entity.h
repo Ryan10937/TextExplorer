@@ -36,6 +36,8 @@ class entity{
     bool SearchItem(item* itemToSearch);
     float GetDamage();
     void SetDamage(float damage);
+    float GetMaxHealth();
+    void SetMaxHealth(float maxHealth);
 
 
     private:

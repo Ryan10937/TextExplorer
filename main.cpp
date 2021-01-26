@@ -14,25 +14,6 @@ using namespace std;
 
 int main()
 {
-    /*
-    * 
-    * TESTING FOR EVENTS
-    *    
-    */
-    /*
-    char TestPlayerChar = 'T';
-    entity* TestPlayer = new entity;
-    TestPlayer->SetDisplayChar(TestPlayerChar);
-    TestPlayer->SetName("TestPlayer");
-    event* events = new event;
-
-    //events->RandomEnemyEncounter(TestPlayer, 1);
-    //events->BearAttack(player);
-    //events->AngryMan(player):
-    */
-
-
-    
 
     int initialChoice;
     initialChoice = MainMenu();
@@ -62,6 +43,7 @@ int main()
     gameMap->AddEventToSpot(26,12,'@',4);//blue stone
     gameMap->AddEventToSpot(33,15,'@',5);//yellow stone
     gameMap->AddEventToSpot(30,15,'H',6);//madman
+    gameMap->AddEventToSpot(23,6,'+',8);
     
     srand(time(0));
     int randX;
@@ -70,8 +52,6 @@ int main()
     for(int i=0;i<numRandomMonsters;i++){
         randX = (rand()% (boardWidth-3)) +1; //vary (0-47) + 1
         randY = (rand()% (boardHeight-3)) +1; //vary (0-16) + 1 
-        cout<<"randX is: "<<randX<<endl;
-        cout<<"randY is: "<<randY<<endl;
         if((((gameMap->GetGrid())->at(randY))->at(randX))->GetEventID() == 0){//if no event at spot, put monster there
             gameMap->AddEventToSpot(randX,randY,'M',7);//random monster
         }
