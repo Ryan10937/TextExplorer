@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <fstream>
 #include "Color.h"
+#include "PauseGame.h"
 
 using namespace std;
 
@@ -85,11 +86,8 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     SetColor(12);
     std::cout << RandomEnemy->GetName() << std::endl;
     ResetColor();
-    std::cout << "Press ";
-    SetColor(14);
-    std::cout << "ENTER";
-    ResetColor();
-    std::cout << " to start the fight!";
+
+    Pause();
 
     //call fight between player and new enemy
     if (Fight(player, RandomEnemy))
@@ -100,6 +98,12 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     else
     {
         delete(RandomEnemy);
+        std::cout << "You have gained ";
+        SetColor(11);
+        std::cout << (Stagenumber * 50);
+        ResetColor();
+        std::cout << " experience!";
+        player->AddExperience((Stagenumber * 50));
         return false;
     }
 }

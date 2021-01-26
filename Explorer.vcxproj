@@ -150,6 +150,7 @@
     <ClCompile Include="iAmHere.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="PauseGame.cpp" />
     <ClCompile Include="UserInputErrorChecking.cpp" />
     <ClCompile Include="spot.cpp" />
   </ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="event.h" />
     <ClInclude Include="fetchQuest.h" />
     <ClInclude Include="fightEvent.h" />
+    <ClInclude Include="PauseGame.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="UserInputErrorChecking.h" />
     <ClInclude Include="iAmHere.h" />

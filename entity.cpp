@@ -6,6 +6,7 @@
 #include<iomanip>
 #include"spot.h"
 #include"item.h"
+#include "UserInputErrorChecking.h"
 
 using namespace std;
 
@@ -21,6 +22,8 @@ entity::entity(){
     this->name = "noName";
     inventory = new vector<item*>; 
     this->damage = 1;
+    this->NextLevelUp = 100;
+    this->Level = 1;
 }
 
 void entity::SetHealth(float health)
@@ -131,5 +134,63 @@ float entity::GetMaxHealth(){
     return maxHealth;
 }
 void entity::SetMaxHealth(float maxHealth){
-    this->maxHealth = maxHealth;
+    maxHealth = maxHealth;
+}
+
+
+
+void entity::AddExperience(int Exp)
+{
+    experience += Exp;
+    bool loop = true;
+    while (loop)
+    {
+        if (GetExperience() >= NextLevelUp)
+        {
+            LevelUp();
+            loop = true; //Loops to see if leveled up more than once
+        }
+        else
+        {
+            loop = false;
+        }
+    }
+}
+
+int entity::GetExperience()
+{
+    return experience;
+}
+
+void entity::LevelUp()
+{
+    int choice;
+
+    Level++;
+    std::cout << "You have leveled up!" << std::endl;
+    std::cout << "Level: " << Level << std::endl;
+    std::cout << "Please pick and attribute to add your point too." << std::endl;
+    std::cout << "1. Health + 50\n2. Damage + 5" << std::endl;
+    while (!(cin >> choice) || choice < 0 || choice > 3)
+    {
+        ErrorCheck("Please Enter a 1 or 2.");
+    }
+    switch (choice)
+    {
+    case 1:
+        std::cout << "RUNNING" << std::endl;
+        SetMaxHealth((GetMaxHealth() + 50.f));
+        break;
+    case 2:
+        SetDamage(GetDamage() + 5.f);
+    default:
+        break;
+    }
+    SetHealth(GetMaxHealth());
+    NextLevelUp *= 1.5;
+}
+
+int entity::GetLevel()
+{
+    return Level;
 }

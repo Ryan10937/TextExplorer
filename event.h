@@ -17,7 +17,6 @@ class event
     void GreetingMessage(string greeting);
     
     //Events
-    void BearAttack(entity* player);
     bool AngryMan(entity* player);
     bool EncounterRedStone(entity* player);
     bool EncounterBlueStone(entity* player);

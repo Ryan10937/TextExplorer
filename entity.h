@@ -39,6 +39,12 @@ class entity{
     float GetMaxHealth();
     void SetMaxHealth(float maxHealth);
 
+    //For Leveling
+    void AddExperience(int Exp);//Adds experience to pool and runs level up if there is enough
+    int GetExperience();
+    void LevelUp(); //increases level and handles point spending
+    int GetLevel();
+
 
     private:
     float currentHealth;
@@ -51,6 +57,10 @@ class entity{
     vector<item*>* inventory;//needs gets and sets
     float damage;
 
+    //For Leveling
+    int Level;
+    int experience;
+    int NextLevelUp; //Exp needed to level up
 
 };
 #endif
