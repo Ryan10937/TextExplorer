@@ -24,6 +24,7 @@ entity::entity() {
     this->damage = 1;
     this->NextLevelUp = 100;
     this->Level = 1;
+    this->experience = 0;
 }
 
 void entity::SetHealth(float health)
@@ -140,12 +141,14 @@ void entity::SetMaxHealth(float MaxHP) {
 
 void entity::AddExperience(int Exp)
 {
+    
     experience += Exp;
     bool loop = true;
     while (loop)
     {
         if (GetExperience() >= NextLevelUp)
         {
+            
             LevelUp();
             loop = true; //Loops to see if leveled up more than once
         }
