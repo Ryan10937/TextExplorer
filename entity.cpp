@@ -170,7 +170,7 @@ void entity::LevelUp()
     std::cout << "Level: " << Level << std::endl;
     std::cout << "Please pick and attribute to add your point too." << std::endl;
     std::cout << "1. Health + 50\n2. Damage + 5" << std::endl;
-    while (!(cin >> choice) || choice < 0 || choice > 3)
+    while (!(cin >> choice) || choice <= 0 || choice >= 3)
     {
         ErrorCheck("Please Enter a 1 or 2.");
     }
