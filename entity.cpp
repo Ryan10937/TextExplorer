@@ -10,17 +10,17 @@
 
 using namespace std;
 
-entity::entity(){
+entity::entity() {
     this->currentHealth = 100;
     this->maxHealth = 100;
-    this->position = make_pair(10,10);
+    this->position = make_pair(10, 10);
     this->weapon = new item;
     this->faction = "Nature";
     this->displayChar = 'D';
     this->weapon = new item;
     weapon->damage = 5;
     this->name = "noName";
-    inventory = new vector<item*>; 
+    inventory = new vector<item*>;
     this->damage = 1;
     this->NextLevelUp = 100;
     this->Level = 1;
@@ -41,98 +41,98 @@ float entity::GetWeaponDamage()
     return weapon->damage;
 }
 
-pair<int,int> entity::GetPosition(){
+pair<int, int> entity::GetPosition() {
     return position;
 }
-void entity::SetPosition(pair<int,int> position){
+void entity::SetPosition(pair<int, int> position) {
     this->position = position;
 }
-void entity::SetPosition(int xPos, int yPos){
+void entity::SetPosition(int xPos, int yPos) {
     (this->position).first = xPos;
     (this->position).second = yPos;
 }
-char entity::GetDisplayChar(){
+char entity::GetDisplayChar() {
     return displayChar;
 }
-void entity::SetDisplayChar(char displayChar){
+void entity::SetDisplayChar(char displayChar) {
     this->displayChar = displayChar;
 }
 
-void entity::Attack(entity* enemy){
+void entity::Attack(entity* enemy) {
     enemy->currentHealth = enemy->currentHealth - weapon->damage;
 }
-void entity::SetWeapon(item* weapon){
+void entity::SetWeapon(item* weapon) {
 
     this->weapon = weapon;
     damage = weapon->damage;
 
 }
-void entity::SetName(string name){
+void entity::SetName(string name) {
     this->name = name;
 }
-string entity::GetName(){
+string entity::GetName() {
     return name;
 }
 
-void entity::SetInventory(vector<item*>* inventory){
+void entity::SetInventory(vector<item*>* inventory) {
     this->inventory = inventory;
 }
-vector<item*>* entity::GetInventory(){
+vector<item*>* entity::GetInventory() {
     return inventory;
 }
-void entity::AddInventoryItem(item* itemToAdd){
+void entity::AddInventoryItem(item* itemToAdd) {
     inventory->push_back(itemToAdd);
-    cout <<"\n"<<itemToAdd->name<<" added to inventory!\n";
+    cout << "\n" << itemToAdd->name << " added to inventory!\n";
 }
-void entity::RemoveInventoryItem(int itemID){
-    for(int i=0;i<inventory->size();i++){
-        if((inventory->at(i))->ID == itemID){
+void entity::RemoveInventoryItem(int itemID) {
+    for (int i = 0; i < inventory->size(); i++) {
+        if ((inventory->at(i))->ID == itemID) {
             inventory->erase(inventory->begin() + i);
         }
     }
 }
-void entity::RemoveInventoryItem(string itemName){
-    for(int i=0;i<inventory->size();i++){
-        if((inventory->at(i))->name == itemName){
+void entity::RemoveInventoryItem(string itemName) {
+    for (int i = 0; i < inventory->size(); i++) {
+        if ((inventory->at(i))->name == itemName) {
             inventory->erase(inventory->begin() + i);
         }
     }
 }
-void entity::RemoveInventoryItem(item* itemToRemove){
+void entity::RemoveInventoryItem(item* itemToRemove) {
     RemoveInventoryItem(itemToRemove->ID);
 }
-bool entity::SearchItem(int itemID){
-    for(int i=0;i<inventory->size();i++){
-        if((inventory->at(i))->ID == itemID){
+bool entity::SearchItem(int itemID) {
+    for (int i = 0; i < inventory->size(); i++) {
+        if ((inventory->at(i))->ID == itemID) {
             return true;
         }
     }
     return false;
 }
-bool entity::SearchItem(string itemName){
-    for(int i=0;i<inventory->size();i++){
-        if((inventory->at(i))->name == itemName){
+bool entity::SearchItem(string itemName) {
+    for (int i = 0; i < inventory->size(); i++) {
+        if ((inventory->at(i))->name == itemName) {
             return true;
         }
     }
     return false;
 }
-bool entity::SearchItem(item* itemToSearch){
+bool entity::SearchItem(item* itemToSearch) {
     return SearchItem(itemToSearch->ID);
 }
 
 
-float entity::GetDamage(){
+float entity::GetDamage() {
     return damage;
 }
-void entity::SetDamage(float damage){
+void entity::SetDamage(float damage) {
     this->damage = damage;
 }
 
-float entity::GetMaxHealth(){
+float entity::GetMaxHealth() {
     return maxHealth;
 }
-void entity::SetMaxHealth(float MaxHP){
+void entity::SetMaxHealth(float MaxHP) {
     maxHealth = MaxHP;
 }
 
