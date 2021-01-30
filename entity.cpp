@@ -29,7 +29,6 @@ entity::entity(){
 void entity::SetHealth(float health)
 {
     currentHealth = health;
-    maxHealth = health;
 }
 
 float entity::GetHealth()
@@ -133,8 +132,8 @@ void entity::SetDamage(float damage){
 float entity::GetMaxHealth(){
     return maxHealth;
 }
-void entity::SetMaxHealth(float maxHealth){
-    maxHealth = maxHealth;
+void entity::SetMaxHealth(float MaxHP){
+    maxHealth = MaxHP;
 }
 
 
@@ -175,6 +174,8 @@ void entity::LevelUp()
     {
         ErrorCheck("Please Enter a 1 or 2.");
     }
+    std::cout << "Max Health 1: " << GetMaxHealth() << std::endl;
+    std::cout << "Current Health 1: " << GetHealth() << std::endl;
     switch (choice)
     {
     case 1:
@@ -186,7 +187,11 @@ void entity::LevelUp()
     default:
         break;
     }
+    std::cout << "Max Health 2: " << GetMaxHealth() << std::endl;
+    std::cout << "Current Health 2: " << GetHealth() << std::endl;
     SetHealth(GetMaxHealth());
+    std::cout << "Max Health 3: " << GetMaxHealth() << std::endl;
+    std::cout << "Current Health 3: " << GetHealth() << std::endl;
     NextLevelUp *= 1.5;
 }
 
