@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <fstream>
 #include "Color.h"
-#include "PauseGame.h"
 
 using namespace std;
 
@@ -86,8 +85,11 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     SetColor(12);
     std::cout << RandomEnemy->GetName() << std::endl;
     ResetColor();
-
-    Pause();
+    std::cout << "Press ";
+    SetColor(14);
+    std::cout << "ENTER";
+    ResetColor();
+    std::cout << " to start the fight!";
 
     //call fight between player and new enemy
     if (Fight(player, RandomEnemy))
@@ -98,12 +100,6 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     else
     {
         delete(RandomEnemy);
-        std::cout << "You have gained ";
-        SetColor(11);
-        std::cout << (Stagenumber * 50);
-        ResetColor();
-        std::cout << " experience!";
-        player->AddExperience((Stagenumber * 50));
         return false;
     }
 }
@@ -386,7 +382,7 @@ bool event::Fight(entity* player, entity* enemy){
             }
             attackTurn = !attackTurn;
         }
-        return true;
+        return false;
 }
 
 void event::BeginEvent(string beginMessage){
@@ -463,12 +459,12 @@ bool event::EncounterYellowStone(entity* player){
     int userChoice = DisplayChoices(choices);
     cout<<endl;
     switch(userChoice){
-        case(1):
+        case(2):
         cout<<"You leave the stone, leaving its mystery for another\n";
         return true;
         break;
 
-        case(2):
+        case(1):
         cout <<"You pick up the stone. Its center is radiating light like a lamp, likely from a lightning strike.\n";
         item* yellowStone = new item;
         yellowStone->name = "Yellow Whispering Stone";
@@ -517,7 +513,7 @@ bool event::MadMan(entity* player){
         case(0):
         cout<<"Old Man: *whispers* \"All are separate. All are one. From this prison I cannot run.\"\n\n ";
         cout <<"Old Man: My home, though it be mine, cannot hold my broken mind.\n\n";
-        cout <<"The Old Man closes the door, leaving you with crawling skin and the will to walk away.";
+        cout <<"The Old Man closes the door, leaving you with crawling skin and the will to walk away.\n";
         break;
 
         case(1):
