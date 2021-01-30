@@ -97,6 +97,7 @@ bool event::RandomEnemyEncounter(entity* player, int Stagenumber)
     }
     else
     {
+        //Change
         delete(RandomEnemy);
         std::cout << "You have gained ";
         SetColor(11);

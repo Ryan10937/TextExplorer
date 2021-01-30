@@ -174,12 +174,9 @@ void entity::LevelUp()
     {
         ErrorCheck("Please Enter a 1 or 2.");
     }
-    std::cout << "Max Health 1: " << GetMaxHealth() << std::endl;
-    std::cout << "Current Health 1: " << GetHealth() << std::endl;
     switch (choice)
     {
     case 1:
-        std::cout << "RUNNING" << std::endl;
         SetMaxHealth((GetMaxHealth() + 50.f));
         break;
     case 2:
@@ -187,11 +184,7 @@ void entity::LevelUp()
     default:
         break;
     }
-    std::cout << "Max Health 2: " << GetMaxHealth() << std::endl;
-    std::cout << "Current Health 2: " << GetHealth() << std::endl;
     SetHealth(GetMaxHealth());
-    std::cout << "Max Health 3: " << GetMaxHealth() << std::endl;
-    std::cout << "Current Health 3: " << GetHealth() << std::endl;
     NextLevelUp *= 1.5;
 }
 
