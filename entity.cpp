@@ -163,23 +163,26 @@ int entity::GetExperience()
 
 void entity::LevelUp()
 {
-    int choice;
+    int choice = 0;
 
     Level++;
     std::cout << "You have leveled up!" << std::endl;
     std::cout << "Level: " << Level << std::endl;
     std::cout << "Please pick and attribute to add your point too." << std::endl;
     std::cout << "1. Health + 50\n2. Damage + 5" << std::endl;
-    while (!(cin >> choice) || choice < 0 || choice > 3)
+    cin >> choice;
+    while (!(choice == 1 || choice == 2))
     {
+        //FIXME
         ErrorCheck("Please Enter a 1 or 2.");
+        cin >> choice;
     }
     switch (choice)
     {
     case 1:
         SetMaxHealth((GetMaxHealth() + 50.f));
         break;
-    case 2:
+    case(2):
         SetDamage(GetDamage() + 5.f);
     default:
         break;
